@@ -1,0 +1,64 @@
+{{extend 'layout.html'}}
+
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<script src="{{ = URL('static','js/vue.min.js') }}"></script>
+
+<script>
+  let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
+  let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
+  let getYourReviewUrl = "{{ = URL('api', 'get_your_review') }}";
+  let updateStarUrl = "{{ = URL('api', 'update_star') }}";
+  let getOtherReviewsUrl = "{{ = URL('api', 'get_other_reviews') }}";
+</script>
+
+<div id="app">
+  <div class="all-books">
+    <div v-for="book in books" class="book-container">
+      <div class="stars-row">
+        <div v-for="i in starIndices">
+          <i v-if="i > book.avg_rating" class="fa fa-star-o"></i>
+          <i v-if="i <= book.avg_rating" class="fa fa-star"></i>
+        </div>
+      </div>
+      <div class="book-title">${ book.title }</div>
+      <div class="book-author">by ${ book.author }</div>
+      <div class="move-right">
+        <button v-on:click="getYourReview(book.index); getOtherReviews(book.index); toggleReviewsSection(book.index);"
+          class="reviews-button">Reviews</button>
+      </div>
+
+      <div v-if="book.showReviews">
+        <div v-if="loggedInUser != undefined">
+          <div class="your-review-title">Your Review:</div>
+          <div class="stars-row-modified">
+            <div v-for="i in starIndices" v-on:mouseleave="leaveStarRow(book.index)">
+              <i v-if="i > book.yourReview.numStars" v-on:mouseenter="hoverStar(book.index, i)"
+                v-on:click="clickStar(book.index, i)" class="fa fa-star-o"></i>
+              <i v-if="i <= book.yourReview.numStars" v-on:mouseenter="hoverStar(book.index, i)"
+                v-on:click="clickStar(book.index, i)" class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="other-reviews">
+          <div v-if="loggedInUser != undefined && book.otherReviews.length > 0" class="other-review-title">Other
+            Reviews:</div>
+          <div v-for="review in book.otherReviews" class="other-review">
+            <div class="other-review-name">${ review.name }:</div>
+            <div class="stars-row-modified">
+              <div v-for="i in starIndices">
+                <i v-if="i > review.rating" class="fa fa-star-o"></i>
+                <i v-if="i <= review.rating" class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script src="{{ = URL('static/js', 'index.js') }}"></script>

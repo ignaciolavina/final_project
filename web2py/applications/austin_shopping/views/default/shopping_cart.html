@@ -1,0 +1,21 @@
+<div class="view-cart-icon">
+    <button class="add-button" v-on:click=" route = 'store' ">Back to Store</button>
+</div>
+
+<h3 class="text-center margin-top">Your Order</h3>
+<ol class="cart-container">
+    <li class="cart-entry" v-for="e in cart.entries">
+        <strong class="list-item">${ e.book.title }</strong>
+        <div class="list-item"><span>$</span>${ e.book.price.toFixed(2) }</div>
+        <div class="quantity">
+            <div class="">Quantity: ${ e.quantity }</div>
+        </div>
+        <div class="cart-button-row">
+            <i class="fa fa-plus clickable" v-bind:class="{'red-icon': e.book.stock <= e.quantity}" v-on:click="increaseQuantity(e.index);"></i> 
+            <i class="fa fa-minus clickable" v-bind:class="{'red-icon': e.quantity <= 0 || e.book.stock <= 0}" v-on:click="decreaseQuantity(e.index);"></i>
+            <i class="fa fa-trash clickable"></i>
+        </div>
+    </li>
+</ol>
+
+<h3 class="text-center margin-top">Total: <span>$</span> ${ cart.orderTotal.toFixed(2) }</h3>

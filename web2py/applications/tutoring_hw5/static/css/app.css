@@ -1,0 +1,117 @@
+.all-books {
+    padding: 20px;
+}
+
+.stars-row {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.stars-row-modified {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    bottom: 20px;
+}
+
+.book-container {
+    background-color: powderblue;
+    padding: 10px 20px;
+    margin-top: 20px;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.book-title {
+    font-style: italic;
+    font-size: 25px;
+}
+
+.move-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.space-apart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviews-button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(160, 206, 212);
+    padding: 5px 10px;
+    transition: 0.5s all;
+}
+
+.reviews-button:hover {
+    cursor: pointer;
+    background-color: rgb(104, 157, 165);
+}
+
+.reviews-button:focus {
+    outline: none;
+}
+
+.reviews-section {
+    background-color: rgb(192, 240, 247);
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.your-review {
+    display: inline-block;
+    height: 250px;
+}
+
+.your-review-title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 55px;
+}
+
+.save-button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(160, 206, 212);
+    padding: 5px 10px;
+    transition: 0.5s all;
+    margin-right: 55px;
+}
+
+.review-body {
+    width: 350px;
+    height: 150px;
+    resize: none;
+    border: none;
+    background-color: rgb(225, 247, 250)
+}
+
+.other-review-title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.other-review-name {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.other-review-body {
+    text-align: left;
+    font-size: 14px;
+}

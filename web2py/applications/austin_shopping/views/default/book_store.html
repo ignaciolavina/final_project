@@ -1,0 +1,27 @@
+<div class="view-cart-icon">
+    <button class="add-button" v-if="user" v-on:click=" route = 'cart' ">
+        ${ cart.entries.length }
+        <i class="fa fa-shopping-cart cart"></i>
+    </button>
+</div>
+
+<div class="center-books-container">
+    <div class="books-container">
+        <div v-for="b in books" class="book">
+            <div class="book-title">${ b.title }</div>
+            <div class="book-author">${ b.author }</div>
+            <div class="book-price"><span>$</span>${ b.price.toFixed(2) }</div>
+            <div class="book-stock">In Stock: ${ b.stock }</div>
+            <div v-if="user && b.stock > 0" class="button-row">
+                <button v-if="!b.is_in_cart" v-on:click="addToCart(b.index);" class="add-button">
+                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-shopping-cart cart"></i>
+                </button>
+                <button v-if="b.is_in_cart" class="add-button">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-shopping-cart cart"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

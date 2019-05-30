@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'store.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'cart.css') }}" />
+<script src="{{ = URL('static','js/vue.min.js') }}"></script>
+
+<script>
+    let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
+    let getBooksUrl = "{{ = URL('api', 'get_books') }}";
+    let getCartEntriesUrl = "{{ = URL('api', 'get_cart_entries') }}";
+    let updateCartEntryUrl = "{{ = URL('api', 'update_cart_entry') }}";
+</script>
+
+<div id="app">
+
+    <div v-if=" route == 'store' ">
+        {{ include 'default/book_store.html' }}
+    </div>
+
+    <div v-if=" route == 'cart' ">
+        {{ include 'default/shopping_cart.html' }}
+    </div>
+
+</div>
+
+<script src="{{ = URL('static/js', 'index.js') }}"></script>
