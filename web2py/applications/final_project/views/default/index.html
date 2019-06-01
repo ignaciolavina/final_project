@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<script src="{{ = URL('static','js/vue.min.js') }}"></script>
+
+<script>
+  let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
+  let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
+</script>
+
+<div id="app">
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <div class="row justify-content-md-center">
+      <h3>Search:</h3>
+      <input type="text" class="search-bar">
+
+    </div>
+  </div>
+
+  <!-- Books (dinamic disposition) -->
+  <div class="container-fluid">
+    <div clas="row">
+      <div v-for="book in books">
+        <!-- <div class="container"> -->
+        <div class="col-sm3">
+          <div class="book-container">
+            <div class="book-title">${ book.title }</div>
+            <div class="book-author">by ${ book.author }</div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ = URL('static/js', 'index.js') }}"></script>
