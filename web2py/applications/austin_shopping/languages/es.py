@@ -262,6 +262,7 @@
 'Lost Password': 'Contraseña perdida',
 'Lost password?': '¿Olvidó la contraseña?',
 'lost password?': '¿olvidó la contraseña?',
+'Lost your password?': 'Lost your password?',
 'Main Menu': 'Menú principal',
 'Manage %(action)s': 'Gestionar %(action)s',
 'Manage Access Control': 'Gestionar control de acceso',
