@@ -19,6 +19,42 @@ def books():
     )
     return dict(grid=grid)
 
+
+# NOT Working properly
+# @auth.requires_login
+def profile():
+
+    user = db(db.user_profile.user_email == auth.user.email).select().first()
+
+    # If the user is new and is not registered
+    # if user == None:        
+    #     # send to profile with edit = y
+    #     return redirect(URL('default', 'profile_page', vars=dict(
+    #         next=URL('default', 'store'), edit='y')))
+    if (user == None):
+        return "Working on it, not user detected!"
+
+    form = SQLFORM(
+    db.user_profile, user,
+    readonly=True,
+    deletable = False,
+    editable = True
+    )
+    return dict(form=form)
+
+
+# Just for testing purposes, for checking the list of tags
+# do /default/tags on the browser
+def tags():
+    db.tag.id.readable = db.tag.id.writable = False
+    grid = SQLFORM.grid(
+        db.tag,
+        create= True,
+        editable = True,
+        csv=False
+    )
+    return dict(grid=grid)
+
 # ---- API (example) -----
 @auth.requires_login()
 def api_get_user_email():
