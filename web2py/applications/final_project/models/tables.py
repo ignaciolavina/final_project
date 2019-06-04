@@ -25,6 +25,7 @@ db.define_table('book',
     Field('book_condition', default=''),
     # Field('taggi', format='%(name)s'),
     Field('tags', 'list:reference tag')
+<<<<<<< HEAD
     # "condition" & "state" are aparentrly reserved keywords
     
 )
@@ -33,6 +34,9 @@ db.define_table('book',
 db.define_table('tags',
     Field('name', type='text', default=''),
     Field('books','list:reference book'),
+=======
+    # "condition" & "state" are aparently reserved keywords
+>>>>>>> b4ea00e0031c2490ab808e16c9cecf94fd3ff94a
 )
 
 
@@ -45,8 +49,8 @@ db.define_table('tags',
 
 # ___________________ BOOK VALIDATION ____________________________
 db.book.title.requires = IS_NOT_EMPTY(error_message='Title can not be empty')
-# down ther is just an example
-db.book.book_condition.requires = IS_IN_SET(('New','Semi new', 'Used','Very used'))
+# down there is just an example
+db.book.book_condition.requires = IS_IN_SET(('New','Semi-New', 'Used','Very Used'))
 # Should we set a length?
 db.book.description.requires = IS_LENGTH(1024) 
 
