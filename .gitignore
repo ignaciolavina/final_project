@@ -1,17 +1,17 @@
 *.pyc
-/*
-/*/
+/web2py/*
+/web2py/*/
 !.gitignore
 !routes.py
 !README
-/applications/*/cache/
-/applications/*/databases/*
-/applications/*/errors/
-/applications/*/sessions/
-/applications/*/private/
-/applications/*/uploads/*
-/applications/*/.hg/
-!/applications/
+/web2py/applications/*/cache/
+/web2py/applications/*/databases/*
+/web2py/applications/*/errors/
+/web2py/applications/*/sessions/
+/web2py/applications/*/private/
+/web2py/applications/*/uploads/*
+/web2py/applications/*/.hg/
+!/web2py/applications/
  
 ### To include only specific apps, uncomment:
 #/applications/*
