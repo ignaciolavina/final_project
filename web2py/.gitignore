@@ -1,0 +1,18 @@
+*.pyc
+/*
+/*/
+!.gitignore
+!routes.py
+!README
+/applications/*/cache/
+/applications/*/databases/*
+/applications/*/errors/
+/applications/*/sessions/
+/applications/*/private/
+/applications/*/uploads/*
+/applications/*/.hg/
+!/applications/
+ 
+### To include only specific apps, uncomment:
+#/applications/*
+#!/applications/{myapp}/
