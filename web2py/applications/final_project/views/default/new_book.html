@@ -8,48 +8,70 @@
 </script>
 {{end}}
 
-<div class="main_content">
+<div class="container">
+    <div class="">
+        <div>
+            <h1> Add Book</h1>
+        </div>
+        <div id="vue_new_book" class="display:none">
+            <form>
+                <div class="form-group">
+                    <h4>Book title</h4>
+                    <input type="text" class="form-control" placeholder="title" v-model="book_title"
+                        v-on:input="add_tag">
+                    <!-- <label for="formGroupExampleInput">Book title</label> -->
+                    <!-- <input type="text" v-model="book_title" v-on:input="add_tag" /> -->
+                </div>
+                <div class="form-group">
+                    <h4>Topic</h4>
+                    <input type="text" class="form-control" placeholder="title" v-model="book_topic"
+                        v-on:input="add_tag">
 
-    <div id="vue_new_book" class="display:none">
-        <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
+                    <!-- The next deleted for the moment, but includes all the other book atributes -->
 
-        <!-- v-model="search_string" v-on:input="do_search" -->
-        <form>
-            <div class="form-group">
-                <label for="formGroupExampleInput">Book title</label>
-                <input type="text" v-model="book_title" v-on:input="add_tag" />
+                    <!-- <label for="formGroupExampleInput">Topic</label>
+                <input type="text" v-model="book_topic" v-on:input="add_tag" /> -->
+                </div>
+                <!-- <div class="form-group">
+                <h4>Author</h4>
+                <input type="text" class="form-control" v-model="book_author" v-on:input="add_tag" />
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput">Topic</label>
-                <input type="text" v-model="book_topic" v-on:input="add_tag" />
+                <h4>Book condition</h4>
+                <input type="text" class="form-control" v-model="book_condition" v-on:input="add_tag" />
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput">Label</label>
-                <input type="text" v-model="book_label" v-on:input="add_tag" />
-
+                <h4>Edition</h4>
+                <input type="text" class="form-control" v-model="book_edition" v-on:input="" />
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Another label</label>
+                <h4>Another Label</h4>
                 <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
             </div>
-        </form>
+        </form> -->
+
+                <div>
+                    <h4>Book description</h4>
+                </div>
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Book description</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea"
+                        placeholder="Please, describe the book a bit to help other users"></textarea>
+                </div>
 
 
-
-        <div v-for="tag in tags">
-
-            <span class="badge badge-pill badge-dark">${ tag }</span>
-            <!-- <p>aaaa</p>
-            <p>${ tag }</p> -->
+                <!-- for display all the tags that are goihg to be stored on the database -->
+                <h3>List of tags</h3>
+                <div v-for="tag in tags">
+                    <span class="badge badge-pill badge-dark">${ tag }</span>
+                </div>
         </div>
-
-
-        <!-- <button v-on:click="expose_tags" class="reviews-button"> -->
-
-        <!-- <div v-for="s in strings"> ${s} </div> -->
-
+        <br>
+        <button type="button" class="btn btn-primary">Submit</button>
     </div>
-
 </div>
 
 <script src="{{=URL('static', 'js/new_book.js')}}"></script>

@@ -9,6 +9,7 @@ response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Books'), False, URL('default', 'books'), []),
     (T('Add Book'), False, URL('default', 'books'), []),
+    (T('Add Book2'), False, URL('default', 'new_book'), []),
     (T('Profile'), False, URL('default', 'profile'), [])
 ]
 

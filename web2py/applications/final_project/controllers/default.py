@@ -20,6 +20,7 @@ def books():
     return dict(grid=grid)
 
 
+# form for adding a new book
 def new_book():
     return dict()
 
