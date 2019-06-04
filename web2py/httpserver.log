@@ -6613,3 +6613,5 @@ P/1.1, 200, 0.003000
 127.0.0.1, 2019-06-04 16:13:53, GET, /final_project/default/books, HTTP/1.1, 200, 0.106000
 127.0.0.1, 2019-06-04 16:13:56, GET, /final_project/default/new_book, HTTP/1.1, 200, 0.094000
 127.0.0.1, 2019-06-04 16:13:56, GET, /final_project/static/js/new_book.js, HTTP/1.1, 304, 0.000000
+127.0.0.1, 2019-06-04 16:28:15, GET, /final_project/default/new_book, HTTP/1.1, 500, 0.436000
+127.0.0.1, 2019-06-04 16:28:15, GET, /favicon.ico, HTTP/1.1, 400, 0.000000

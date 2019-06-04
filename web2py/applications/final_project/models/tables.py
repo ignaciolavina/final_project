@@ -25,7 +25,6 @@ db.define_table('book',
     Field('book_condition', default=''),
     # Field('taggi', format='%(name)s'),
     Field('tags', 'list:reference tag')
-<<<<<<< HEAD
     # "condition" & "state" are aparentrly reserved keywords
     
 )
@@ -34,9 +33,6 @@ db.define_table('book',
 db.define_table('tags',
     Field('name', type='text', default=''),
     Field('books','list:reference book'),
-=======
-    # "condition" & "state" are aparently reserved keywords
->>>>>>> b4ea00e0031c2490ab808e16c9cecf94fd3ff94a
 )
 
 
