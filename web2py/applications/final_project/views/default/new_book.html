@@ -3,7 +3,8 @@
 {{block head}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-    var my_url = "{{=URL('api', 'my_method')}}";
+    var save_new_book_url = "{{=URL('api', 'save_new_book')}}";
+    var getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
     var search_url = "{{=URL('api', 'search', user_signature=True, hash_vars=False)}}";
 </script>
 {{end}}
@@ -70,7 +71,7 @@
                 </div>
         </div>
         <br>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button v-on:click="save_new_book" type="button" class="btn btn-primary">Submit</button>
     </div>
 </div>
 

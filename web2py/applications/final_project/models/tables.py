@@ -14,6 +14,9 @@ db.define_table('user_profile',
             )
 
 db.define_table('book',
+    # User who have created the book
+    # "user" a keyword RESERVED
+    # Field('user', default=''),
     Field('title', default=''),
     Field('author', default=''),
     Field('price', type='float', default=''),
@@ -23,12 +26,19 @@ db.define_table('book',
     # Field('taggi', format='%(name)s'),
     Field('tags', 'list:reference tag')
     # "condition" & "state" are aparentrly reserved keywords
+    
+)
+
+# Tags is a table that has a name, and a list of books that contain that tag
+db.define_table('tags',
+    Field('name', type='text', default=''),
+    Field('books','list:reference book'),
 )
 
 
-db.define_table('tag',
-                 Field('name'),
-                 format='%(name)s')
+# db.define_table('tag',
+#                  Field('name'),
+#                  format='%(name)s')
 # Interesting to check:
 # http://web2py.com/books/default/chapter/29/06/the-database-abstraction-layer#list_types
 
