@@ -14,14 +14,11 @@ let getAllBooks = function () {
     });
 };
 
+// NOt used YET
 let processBooks = function () {
     let index = 0;
     app.books.map((book) => {
         Vue.set(book, 'index', index++);
-        Vue.set(book, 'showReviews', false);
-        Vue.set(book, 'yourReview', { body: '' });
-        Vue.set(book, 'otherReviews', []);
-        Vue.set(book, 'isHidden', false);
     });
 };
 

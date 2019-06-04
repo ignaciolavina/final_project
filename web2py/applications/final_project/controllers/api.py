@@ -19,12 +19,12 @@ def save_new_book():
 
     list_of_tags = request.vars.tags
     # For each tag, update or insert in the database
-    for tag in list_of_tags:
-        # Check if tag is already in the db
-        db.tags.update_or_insert((db.tags.name = request.vars.tag),
-            name = request.vars.tag,
-            # book = book reference
-        )
+    # for tag in list_of_tags:
+    #     # Check if tag is already in the db
+    #     db.tags.update_or_insert((db.tags.name = request.vars.tag),
+    #         name = request.vars.tag,
+    #         # book = book reference
+    #     )
     
     # When validation, send respose trhough this boolean var
     # stored_correctly = True
