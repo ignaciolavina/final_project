@@ -145,7 +145,7 @@ let do_search = function () {
 };
 
 let app = new Vue({
-    el: "#app",
+    el: "#app_two",
     delimiters: ['${', '}'],
     unsafeDelimiters: ['!{', '}'],
     data: {

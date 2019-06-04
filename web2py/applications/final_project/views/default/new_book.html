@@ -1,0 +1,55 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var my_url = "{{=URL('api', 'my_method')}}";
+    var search_url = "{{=URL('api', 'search', user_signature=True, hash_vars=False)}}";
+</script>
+{{end}}
+
+<div class="main_content">
+
+    <div id="vue_new_book" class="display:none">
+        <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
+
+        <!-- v-model="search_string" v-on:input="do_search" -->
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Book title</label>
+                <input type="text" v-model="book_title" v-on:input="add_tag" />
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Topic</label>
+                <input type="text" v-model="book_topic" v-on:input="add_tag" />
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Label</label>
+                <input type="text" v-model="book_label" v-on:input="add_tag" />
+
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Another label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            </div>
+        </form>
+
+
+
+        <div v-for="tag in tags">
+
+            <span class="badge badge-pill badge-dark">${ tag }</span>
+            <!-- <p>aaaa</p>
+            <p>${ tag }</p> -->
+        </div>
+
+
+        <!-- <button v-on:click="expose_tags" class="reviews-button"> -->
+
+        <!-- <div v-for="s in strings"> ${s} </div> -->
+
+    </div>
+
+</div>
+
+<script src="{{=URL('static', 'js/new_book.js')}}"></script>

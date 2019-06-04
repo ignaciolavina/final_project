@@ -20,6 +20,9 @@ def books():
     return dict(grid=grid)
 
 
+def new_book():
+    return dict()
+
 # NOT Working properly
 # @auth.requires_login
 def profile():
