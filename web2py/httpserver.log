@@ -6423,3 +6423,8 @@ P/1.1, 200, 0.003000
 127.0.0.1, 2019-06-04 03:28:43, GET, /final_project/default/profile, HTTP/1.1, 200, 0.090000
 127.0.0.1, 2019-06-04 03:28:43, GET, /favicon.ico, HTTP/1.1, 400, 0.001000
 127.0.0.1, 2019-06-04 03:28:45, GET, /final_project/default/new_book, HTTP/1.1, 200, 0.100000
+127.0.0.1, 2019-06-04 10:05:40, GET, /final_project/default/index, HTTP/1.1, 200, 0.429000
+127.0.0.1, 2019-06-04 10:05:41, GET, /final_project/static/css/app.css, HTTP/1.1, 304, 0.020000
+127.0.0.1, 2019-06-04 10:05:42, GET, /final_project/api/get_logged_in_user, HTTP/1.1, 200, 0.228000
+127.0.0.1, 2019-06-04 10:05:42, GET, /final_project/api/get_all_books, HTTP/1.1, 200, 0.395000
+127.0.0.1, 2019-06-04 10:05:44, GET, /final_project/default/books, HTTP/1.1, 200, 0.319000
