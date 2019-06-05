@@ -12,20 +12,24 @@ def get_all_books():
 def save_new_book():
     print("save new book API")
     print (request.vars)
-    db.book.update_or_insert (
+    id_book = db.book.update_or_insert (
         title = request.vars.title,
         # Add the rest of the values ti insert
         # WARNING! author pointing "topic", change when needed
         author = request.vars.topic
     )
-
+    print ("id:", id_book)
+    book = db.book(db.book.id == id_book)
+    print("Book retrieved: ", book)
     list_of_tags = request.vars.tags
     # For each tag, update or insert in the database
     # for tag in list_of_tags:
     #     # Check if tag is already in the db
-    #     db.tags.update_or_insert((db.tags.name = request.vars.tag),
-    #         name = request.vars.tag,
+    #     # lis_books_for_tag = (db.tags.name == tag).select().book
+    #     db.tags.update_or_insert((db.tags.name == tag),
+    #         name = tag,            
     #         # book = book reference
+    #         # book.push(book_id)
     #     )
     
     # When validation, send respose trhough this boolean var

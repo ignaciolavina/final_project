@@ -29,11 +29,11 @@ let save_new_book = function () {
         //user: ...
     }, function (response) {
 
-        alert("Book added correctly!");
         // for implementing a sping load bar
-        // setTimeout(function () {
-        //     yourReview.hasBeenSaved = false;
-        // }, 1000);
+        setTimeout(function () {
+            alert("Book added correctly!");
+            // yourReview.hasBeenSaved = false;
+        }, 1000);
     }
     )
 }

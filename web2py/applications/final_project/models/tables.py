@@ -7,6 +7,9 @@ def get_name():
     return None if auth.user is None else auth.user.first_name + ' ' + auth.user.last_name
 
 
+# TO DO, Set primary keys and foreign keys
+
+
 # Check if we need it for display the user profile
 db.define_table('user_profile',
             Field('user_email',  default=get_user_email()),
@@ -31,7 +34,7 @@ db.define_table('book',
 
 # Tags is a table that has a name, and a list of books that contain that tag
 db.define_table('tags',
-    Field('name', type='text', default=''),
+    Field('name', type='text', default=''), # Primary key?! SO no two tags with same name
     Field('books','list:reference book'),
 )
 
