@@ -18,6 +18,7 @@ let add_tag = function () {
 }
 
 let save_new_book = function () {
+    console.log("save book");
     $.post(save_new_book_url, {
         // Book atributes
         title: app.book_title,

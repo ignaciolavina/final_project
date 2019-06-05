@@ -10,6 +10,8 @@ def get_all_books():
 
 # Missing all validation
 def save_new_book():
+    print("save new book API")
+    print (request.vars)
     db.book.update_or_insert (
         title = request.vars.title,
         # Add the rest of the values ti insert
