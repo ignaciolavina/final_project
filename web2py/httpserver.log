@@ -6043,3 +6043,5 @@ P/1.1, 200, 0.003000
 127.0.0.1, 2019-05-31 21:31:57, GET, /final_project/static/images/favicon.ico, HTTP/1.1, 200, 0.001000
 127.0.0.1, 2019-05-31 21:31:57, GET, /final_project/api/get_logged_in_user, HTTP/1.1, 200, 0.115000
 127.0.0.1, 2019-05-31 21:31:57, GET, /final_project/api/get_all_books, HTTP/1.1, 200, 0.112000
+127.0.0.1, 2019-06-05 15:00:28, GET, /final_project/default/index, HTTP/1.1, 500, 0.274000
+127.0.0.1, 2019-06-05 15:00:29, GET, /favicon.ico, HTTP/1.1, 400, 0.000000

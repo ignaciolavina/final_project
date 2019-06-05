@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.AttributeError'> 'DAL' object has no attribute 'tag'"
+p3
+sS'layer'
+p4
+S'C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\applications\\final_project\\controllers/api.py'
+p5
+sS'code'
+p6
+S'<code object <module> at 0000000007F74AB0, file "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\applications\\final_project\\controllers/api.py", line 1>'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\restricted.py", line 219, in restricted\n    exec(ccode, environment)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\applications\\final_project\\controllers/api.py", line 60, in <module>\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\globals.py", line 421, in <lambda>\n    self._caller = lambda f: f()\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\applications\\final_project\\controllers/api.py", line 6, in get_all_books\n    books = db(db.book).select()\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\objects.py", line 2395, in select\n    return adapter.select(self.query, fields, attributes)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\sqlite.py", line 82, in select\n    return super(SQLite, self).select(query, fields, attributes)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 763, in select\n    return self._select_aux(sql, fields, attributes, colnames)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 742, in _select_aux\n    return processor(rows, fields, colnames, cacheable=cacheable)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 306, in parse\n    for row in rows\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 232, in _parse\n    value = self.parse_value(value, fit, ft, blob_decode)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 199, in parse_value\n    return self.parser.parse(value, field_itype, field_type)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\__init__.py", line 100, in parse\n    return self.registered[field_itype](value, field_type)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\__init__.py", line 75, in __call__\n    return self.call(value, field_type)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\__init__.py", line 69, in _call_with_extras\n    return self.f(self.parser, value, **extras)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\base.py", line 153, in _list_references\n    el, field_type[5:]) for el in value]\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\__init__.py", line 75, in __call__\n    return self.call(value, field_type)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\__init__.py", line 69, in _call_with_extras\n    return self.f(self.parser, value, **extras)\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\parsers\\base.py", line 52, in _reference\n    value._table, value._record = self.adapter.db[referee], None\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\base.py", line 668, in __getitem__\n    return self.__getattr__(str(key))\n  File "C:\\Users\\Ignacio\\Desktop\\CMPS183\\Final_Project\\web2py\\gluon\\packages\\dal\\pydal\\base.py", line 675, in __getattr__\n    return BasicStorage.__getattribute__(self, key)\nAttributeError: \'DAL\' object has no attribute \'tag\'\n'
+p11
+s.
