@@ -20,8 +20,8 @@ db.define_table('book',
     # User who have created the book
     # "user" a keyword RESERVED
     # Field('user', default=''),
-    Field('title', default=''),
-    Field('author', default=''),
+    Field('title', type='string', default=''),
+    Field('author', type='string', default=''),
     Field('price', type='float', default=''),
     Field('edition', type='float', default=''),
     Field('description', type='text', default=''),
@@ -34,7 +34,7 @@ db.define_table('book',
 
 # Tags is a table that has a name, and a list of books that contain that tag
 db.define_table('tags',
-    Field('name', type='text', default=''), # Primary key?! SO no two tags with same name
+    Field('name',  type='string', default=''), # Primary key?! SO no two tags with same name
     Field('books','list:reference book'),
 )
 

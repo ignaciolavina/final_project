@@ -1,0 +1,25 @@
+{{ extend 'layout.html' }}
+<!-- <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'movies.css') }}" /> -->
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+
+{{block head}}
+
+<div class="">
+    <h1>Store page</h1>
+</div>
+<!-- 
+<div>
+    <a href="{{ = URL('default', 'create_order') }}">
+        <button class="btn btn-default btn-primary right">Create order</button>
+    </a>
+</div> -->
+
+
+<div class="table">
+    <div class="thead" style="margin-top: 30px">
+        {{ = grid }}
+    </div>
+</div>

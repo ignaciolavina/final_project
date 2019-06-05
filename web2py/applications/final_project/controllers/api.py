@@ -20,10 +20,14 @@ def save_new_book():
     )
     print ("id:", id_book)
     book = db.book(db.book.id == id_book)
-    print("Book retrieved: ", book)
+    
+
     list_of_tags = request.vars.tags
+    print (request.vars.tags)
+    print ("list of tags" , list_of_tags)
     # For each tag, update or insert in the database
     # for tag in list_of_tags:
+    #     print (tag)
     #     # Check if tag is already in the db
     #     # lis_books_for_tag = (db.tags.name == tag).select().book
     #     db.tags.update_or_insert((db.tags.name == tag),

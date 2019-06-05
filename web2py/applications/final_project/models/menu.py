@@ -10,7 +10,8 @@ response.menu = [
     (T('Books'), False, URL('default', 'books'), []),
     (T('Add Book'), False, URL('default', 'books'), []),
     (T('Add Book2'), False, URL('default', 'new_book'), []),
-    (T('Profile'), False, URL('default', 'profile'), [])
+    (T('Profile'), False, URL('default', 'profile'), []),
+    (T('Tags (testing)'), False, URL('default', 'tags'), [])
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
