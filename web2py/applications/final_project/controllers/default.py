@@ -20,6 +20,10 @@ def books():
     return dict(grid=grid)
 
 
+# form for adding a new book
+def new_book():
+    return dict()
+
 # NOT Working properly
 # @auth.requires_login
 def profile():
@@ -46,9 +50,9 @@ def profile():
 # Just for testing purposes, for checking the list of tags
 # do /default/tags on the browser
 def tags():
-    db.tag.id.readable = db.tag.id.writable = False
+    db.tags.id.readable = db.tags.id.writable = False
     grid = SQLFORM.grid(
-        db.tag,
+        db.tags,
         create= True,
         editable = True,
         csv=False

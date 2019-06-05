@@ -1,0 +1,19 @@
+{{ extend 'layout.html' }}
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'movies.css') }}" />
+
+{{block head}}
+
+<div>
+    <h1>Order List</h1>
+</div>
+
+<!-- <div>
+    <a href="{{ = URL('default', 'create_order') }}">
+        <button class="btn btn-default btn-primary right">Create order</button>
+    </a>
+</div> -->
+
+
+<div class="">
+    {{ = grid }}
+</div>

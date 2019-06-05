@@ -1,0 +1,17 @@
+{{ extend 'layout.html' }}
+
+<div>
+    <h1>Profile page</h1>
+</div>
+
+<div class="row">
+    <div class="container">
+        {{ = form }}
+    </div>
+</div>
+<div>
+    <a href="{{ = URL('default', 'edit_profile') }}">
+        <button class="btn btn-default btn-primary">Edit profile</button>
+    </a>
+
+</div>

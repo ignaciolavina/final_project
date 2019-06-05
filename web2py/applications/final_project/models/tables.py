@@ -7,6 +7,9 @@ def get_name():
     return None if auth.user is None else auth.user.first_name + ' ' + auth.user.last_name
 
 
+# TO DO, Set primary keys and foreign keys
+
+
 # Check if we need it for display the user profile
 db.define_table('user_profile',
             Field('user_email',  default=get_user_email()),
@@ -14,8 +17,11 @@ db.define_table('user_profile',
             )
 
 db.define_table('book',
-    Field('title', default=''),
-    Field('author', default=''),
+    # User who have created the book
+    # "user" a keyword RESERVED
+    # Field('user', default=''),
+    Field('title', type='string', default=''),
+    Field('author', type='string', default=''),
     Field('price', type='float', default=''),
     Field('edition', type='float', default=''),
     Field('description', type='text', default=''),
@@ -23,20 +29,27 @@ db.define_table('book',
     # Field('taggi', format='%(name)s'),
     Field('tags', 'list:reference tag')
     # "condition" & "state" are aparentrly reserved keywords
+    
+)
+
+# Tags is a table that has a name, and a list of books that contain that tag
+db.define_table('tags',
+    Field('name',  type='string', default=''), # Primary key?! SO no two tags with same name
+    Field('books','list:reference book'),
 )
 
 
-db.define_table('tag',
-                 Field('name'),
-                 format='%(name)s')
+# db.define_table('tag',
+#                  Field('name'),
+#                  format='%(name)s')
 # Interesting to check:
 # http://web2py.com/books/default/chapter/29/06/the-database-abstraction-layer#list_types
 
 
 # ___________________ BOOK VALIDATION ____________________________
 db.book.title.requires = IS_NOT_EMPTY(error_message='Title can not be empty')
-# down ther is just an example
-db.book.book_condition.requires = IS_IN_SET(('New','Semi new', 'Used','Very used'))
+# down there is just an example
+db.book.book_condition.requires = IS_IN_SET(('New','Semi-New', 'Used','Very Used'))
 # Should we set a length?
 db.book.description.requires = IS_LENGTH(1024) 
 
