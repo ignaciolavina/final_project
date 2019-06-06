@@ -19,12 +19,16 @@ let add_tag = function () {
 
 let save_new_book = function () {
     console.log("save book");
+    dict = {
+        tagy: app.tags
+    }
     $.post(save_new_book_url, {
         // Book atributes
         title: app.book_title,
         topic: app.book_topic,
         // List of tags
-        tags: app.tags
+        tags: app.tags,
+        tagy: dict
         // User
         //user: ...
     }, function (response) {

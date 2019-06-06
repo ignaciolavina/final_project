@@ -66,13 +66,13 @@ p23
 sg8
 I00
 sg9
-I32768
+I512
 sg10
-S'TEXT'
+S'CHAR(512)'
 p24
 sg12
 I00
 sg13
-S'text'
+S'string'
 p25
 ss.
