@@ -1,6 +1,7 @@
 {{extend 'layout.html'}}
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<link href="{{ = URL('static', '/open-iconic-master/font/css/open-iconic-bootstrap.css')}}" rel="stylesheet">
 <script src="{{ = URL('static','js/vue.min.js') }}"></script>
 
 <script>
@@ -21,12 +22,16 @@
 
   <!-- Books (dinamic disposition) -->
   <div class="container-fluid">
-    <div clas="row">
+    <div class="row">
       <div v-for="book in books">
         <!-- <div class="container"> -->
         <div class="col-sm3">
           <div class="book-container">
             <div class="book-title">${ book.title }</div>
+            <!-- Watchlist div -->
+            <div>
+              <button class="btn btn-primary"><span class="oi oi-eye watchlist-icon" title="eye icon" aria-hidden="true"></span></button>
+            </div>
             <div class="book-author">by ${ book.author }</div>
             <!-- </div> -->
           </div>
