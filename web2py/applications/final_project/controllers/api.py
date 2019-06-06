@@ -85,32 +85,23 @@ def search():
 
     # result[] is the variable to send back (contains a list of books)
     result = []
-    # Iterating though all the tags in the db, searching for coincidence with the search_string
-    query = []
-    
+   
     # Search in db where tag like '%string%'
     string_query = ('%' + search_string.lower() + '%')
-    query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
-    # for t in tags:
-    #     # if the string is contained in any tag (even partially)
-    #     if search_string.lower() in t.name.lower():
-    #         string_query = ('%' + search_string.lower() + '%')
-    #         # then we make the query
-    #         query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
-    #         print('query= ', query)
+    tags_that_match = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
 
-    # each row represent a tag
-    list_of_book_ids = []
+    # each tag represent a tag that contains the search string
     id_of_books_visited = []
-    for row in query:
-        print('row', row.name, row.books)
-        for b in row.books:
-            if b not in id_of_books_visited:
+    for tag in tags_that_match:
+        # for each tag, we visit all the books
+        for book in tag.books:
+            # if the book has not been visited yet
+            if book not in id_of_books_visited:
                 # print('not in')
-                id_of_books_visited.append(b)
-                print('id founded', b)
-                result.append(db(db.book.id == b).select().first())
-        # res.append(db(db.book.name == row.name))
-    for r in result:
-        print('r', r)
+                id_of_books_visited.append(book)
+                # print('id founded', book)
+                result.append(db(db.book.id == book).select().first())
+
+    # for r in result:
+    #     print('r', r)
     return response.json(dict(books=result))
