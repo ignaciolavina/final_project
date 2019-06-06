@@ -29,7 +29,7 @@
           <div class="book-container">
             <div class="book-title">${ book.title }</div>
             <!-- Watchlist div -->
-            <div>
+            <div v-if="loggedInUser != undefined">
               <button class="btn btn-primary"><span class="oi oi-eye watchlist-icon" title="eye icon" aria-hidden="true"></span></button>
             </div>
             <div class="book-author">by ${ book.author }</div>

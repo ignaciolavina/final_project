@@ -36,6 +36,7 @@ let app = new Vue({
     unsafeDelimiters: ['!{', '}'],
     data: {
         books: [],
+        loggedInUser: undefined
     },
     methods: {
 
