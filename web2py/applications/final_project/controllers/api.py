@@ -81,33 +81,36 @@ def save_new_book():
 def search():
     tags = db(db.tags).select()
     # Obtaining the string of the search var from the request vars
-    s = request.vars.search_string or ''
+    search_string = request.vars.search_string or ''
 
-    # list of products to send back from the server
-    res = []
-    # Iterating though all the products
+    # result[] is the variable to send back (contains a list of books)
+    result = []
+    # Iterating though all the tags in the db, searching for coincidence with the search_string
     query = []
-    for t in tags:
-        # if the string is in the product name (upper & lower case match)
-        if s.lower() in t.name.lower():
-            string_query = ('%' + s.lower() + '%')
-            query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
-            print('query= ', query)
-            # Then add to the list "res" to send back
-            # res.append(t.name)
-            # for b in t.books:
-            #     # res.append(b)
-            #     res.append(db(db.book.id == b))
+    
+    # Search in db where tag like '%string%'
+    string_query = ('%' + search_string.lower() + '%')
+    query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
+    # for t in tags:
+    #     # if the string is contained in any tag (even partially)
+    #     if search_string.lower() in t.name.lower():
+    #         string_query = ('%' + search_string.lower() + '%')
+    #         # then we make the query
+    #         query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
+    #         print('query= ', query)
 
     # each row represent a tag
     list_of_book_ids = []
+    id_of_books_visited = []
     for row in query:
-        print('row', row.books)
+        print('row', row.name, row.books)
         for b in row.books:
-            print('id founded', b)
-            res.append(db(db.book.id == b).select().first())
+            if b not in id_of_books_visited:
+                # print('not in')
+                id_of_books_visited.append(b)
+                print('id founded', b)
+                result.append(db(db.book.id == b).select().first())
         # res.append(db(db.book.name == row.name))
-    for r in res:
+    for r in result:
         print('r', r)
-    print ("queryname" ,query)
-    return response.json(dict(books=res))
+    return response.json(dict(books=result))
