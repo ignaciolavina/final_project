@@ -5,6 +5,12 @@
 
  /* ---------------------------------------- */
  /* FOR INDEX PAGE */
+body {
+    background-color: azure;
+    
+    /* background-color: azure; */
+    /*background-color: cadetblue; */
+}
 .all-books {
     padding: 20px;
 }
@@ -22,6 +28,26 @@
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
 
 }
+
+.book-card {
+    width: 22rem;
+    margin: 20px;
+    border: 1px solid #d4d4d4;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
+}
+
+.own-tag {
+    margin: 2px;
+}
+.max-lines {
+    display: block; /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 4em;
+    line-height: 1.4em;
+  }
 
 .book-container {    
     margin: 20px;
