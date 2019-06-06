@@ -20,6 +20,8 @@ def save_new_book():
     print("\nsave new book API")
     # print ("request.vars=>", request.vars)
 
+    # Now, we need to retrieve the list of tags from request.vars
+    list_of_tags = request.vars.getlist('tags[]')
 
     # *********************BOOK INSERTION************************** #
     # First, insert the book retreiving the atributes from the request.vars    
@@ -28,7 +30,8 @@ def save_new_book():
         title = request.vars.title,
         # Add the rest of the values ti insert
         # WARNING! author pointing "topic", change when needed
-        author = request.vars.topic
+        author = request.vars.topic,
+        tags = list_of_tags
     )    
     # id_book contains the id of the book that we have just inserted in the db
     book = db.book(db.book.id == id_book)
@@ -36,8 +39,6 @@ def save_new_book():
 
 
     # *********************TAGS INSERTION************************** #
-    # Now, we need to retrieve the list of tags from request.vars
-    list_of_tags = request.vars.getlist('tags[]')
     # print ("list of tags" , list_of_tags)
 
     # For each tag, update or insert in the database

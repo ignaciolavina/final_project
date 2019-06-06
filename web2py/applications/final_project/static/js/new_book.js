@@ -19,8 +19,6 @@ let add_tag = function () {
 
 let save_new_book = function () {
     console.log("save book");
-    // Testing only
-    let testing_list = ['tag1', 'tag2'];
 
     $.post(save_new_book_url, {
         // Book atributes

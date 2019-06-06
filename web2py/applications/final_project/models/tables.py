@@ -27,7 +27,7 @@ db.define_table('book',
     Field('description', type='text', default=''),
     Field('book_condition', default=''),
     # Field('taggi', format='%(name)s'),
-    # Field('tags', 'list:reference tag')
+    Field('tags', 'list:string')
     # "condition" & "state" are aparentrly reserved keywords
     
 )
