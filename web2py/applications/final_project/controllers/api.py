@@ -4,17 +4,26 @@ def get_logged_in_user():
 
 def get_all_books():
     with_watchlist = (request.vars.with_watchlist == 'true')
-    print(type(with_watchlist))
     books = db(db.book).select()
     if (with_watchlist == True):
         to_return = []
         # Iterate back through the books to give their watchlist status for the current user
         for book in books:
-            book['watchlist_status'] = False 
+            book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
             to_return.append(book)
         return response.json(dict(books=to_return))
     else:
         return response.json(dict(books=books))
+
+# Internal function for abstraction
+def is_book_on_watchlist(user_email, book_id):
+    ''' Returns whether a book is on a users watchlist in the db'''
+    query = db((db.watchlist.user_email == user_email) & (db.watchlist.book_id == book_id))
+    current_book_watchlist = query.select().first()
+    if (current_book_watchlist != None):
+        return True
+    else:
+        return False
 
 # Function to toggle to presence of a user_book in the db
 def toggle_watchlist():
@@ -25,9 +34,8 @@ def toggle_watchlist():
         print("ERROR: No user email found!")
     # Get the current status of the book in the DB
     query = db((db.watchlist.user_email == user_email) & (db.watchlist.book_id == book_id))
-    current_book_watchlist = query.select().first()
     # If in the DB, we remove it
-    if (current_book_watchlist != None):
+    if (is_book_on_watchlist(user_email, book_id)):
         query.delete()
     # If not in the DB, we add it
     else:
