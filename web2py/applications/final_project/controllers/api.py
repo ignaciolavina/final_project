@@ -82,7 +82,10 @@ def save_new_book():
 def search():
     tags = db(db.tags).select()
     # Obtaining the string of the search var from the request vars
-    search_string = request.vars.search_string or ''
+    search_string = request.vars.search_string
+    if (search_string == ''):
+        result = db(db.book).select()
+        return response.json(dict(books=result))
 
     # result[] is the variable to send back (contains a list of books)
     result = []
