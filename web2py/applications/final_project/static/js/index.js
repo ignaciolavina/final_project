@@ -30,12 +30,23 @@ let getLoggedInUser = function (callback) {
     });
 };
 
+let do_search = function () {
+    $.getJSON(search_url,
+        { search_string: app.search_string },
+        function (data) {
+            app.strings = data.strings;
+            // self.vue.products = data.products;
+            app.books = data.strings;
+        });
+};
+
 let app = new Vue({
     el: "#app",
     delimiters: ['${', '}'],
     unsafeDelimiters: ['!{', '}'],
     data: {
         books: [],
+        search_string: ''
     },
     methods: {
 

@@ -36,8 +36,7 @@ db.define_table('book',
 db.define_table('tags',
     Field('name',  type='string', default=''), # Primary key?! SO no two tags with same name
     # Field('books', 'list:reference book')
-    Field('books', 'list:reference book'), #,
-    Field('test_field', 'string') #,
+    Field('books', 'list:reference book')
     # primarykey = ['name']
 )
 

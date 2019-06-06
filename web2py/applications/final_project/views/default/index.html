@@ -6,6 +6,7 @@
 <script>
   let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
   let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
+  var search_url = "{{=URL('api', 'search', user_signature=True, hash_vars=False)}}";
 </script>
 
 <div id="app">
@@ -14,7 +15,7 @@
   <div class="search-container">
     <div class="row justify-content-md-center">
       <h3>Search:</h3>
-      <input type="text" class="search-bar">
+      <input type="text" class="search-bar" v-model="search_string" v-on:input="do_search">
 
     </div>
   </div>

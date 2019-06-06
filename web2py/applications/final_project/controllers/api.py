@@ -8,7 +8,6 @@ def get_all_books():
 
 
 
-# Missing all validation
 
 ''' Save_new_book is a function that does two main things:
 - Add a new book to the database (parameters sent by the client in request.vars)
@@ -16,6 +15,7 @@ def get_all_books():
     - Add the tag to the database (if not exist)
     - Add to the list of books of that tag, the new book inserted
 '''
+# Missing all validation
 def save_new_book():
     print("\nsave new book API")
     # print ("request.vars=>", request.vars)
@@ -74,3 +74,34 @@ def save_new_book():
     # When validation, send respose trhough this boolean var
     # stored_correctly = True
     return response.json(dict()) #stored=stored_correctly))
+
+
+# Method that receives trhough the request vars an string that the user has input on the search var
+# And retrieves only the products that match part of that string
+def search():
+    tags = db(db.tags).select()
+    # products = db(db.product).select()
+    # Obtaining the string of the search var from the request vars
+    s = request.vars.search_string or ''
+    # list of products to send back from the server
+    res = []
+    # Iterating though all the products
+    query = []
+    for t in tags:
+        # if the string is in the product name (upper & lower case match)
+        if s.lower() in t.name.lower():
+            string_query = ('%' + s.lower() + '%')
+            query = db(db.tags.name.like(string_query)).select(groupby=db.tags.name)
+            print('query= ', query)
+            # Then add to the list "res" to send back
+            # res.append(t.name)
+            # for b in t.books:
+            #     # res.append(b)
+            #     res.append(db(db.book.id == b))
+
+    # each row represent a tag
+    for row in query:
+        print('row', row.name)
+        res.append(db(db.book.name == row.name))
+    print ("queryname" ,query)
+    return response.json(dict(products_shown=res))
