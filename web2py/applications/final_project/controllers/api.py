@@ -4,9 +4,16 @@ def get_logged_in_user():
 
 def get_all_books():
     books = db(db.book).select()
-    return response.json(dict(books=books))
+    to_return = []
+    for book in books:
+        print(book)
+        book['watchlist_status'] = False # Change this to be actually functional lol
+        print(book)
+        to_return.append(book)
+    return response.json(dict(books=to_return))
 
-
+def toggle_watchlist():
+    return response.json(dict())
 
 # Missing all validation
 def save_new_book():

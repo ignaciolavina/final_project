@@ -7,6 +7,7 @@
 <script>
   let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
   let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
+  let toggle_watchlist_url = "{{ = URL('api', 'toggle_watchlist') }}";
 </script>
 
 <div id="app">
@@ -30,7 +31,10 @@
             <div class="book-title">${ book.title }</div>
             <!-- Watchlist div -->
             <div v-if="loggedInUser != undefined">
-              <button class="btn btn-primary"><span class="oi oi-eye watchlist-icon" title="eye icon" aria-hidden="true"></span></button>
+              <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">
+                <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon" aria-hidden="true"></span>
+                <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon" aria-hidden="true"></span>
+              </button>
             </div>
             <div class="book-author">by ${ book.author }</div>
             <!-- </div> -->

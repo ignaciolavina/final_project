@@ -33,6 +33,11 @@
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
 }
 
+.watchlisted-icon {
+    color: gold;
+}
+
+
 /* .book-container {
     background-color: powderblue;
     padding: 10px 20px;

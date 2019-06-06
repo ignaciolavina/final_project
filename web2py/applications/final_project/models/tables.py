@@ -6,6 +6,8 @@ def get_user_email():
 def get_name():
     return None if auth.user is None else auth.user.first_name + ' ' + auth.user.last_name
 
+def get_current_time():
+    return datetime.datetime.today
 
 # TO DO, Set primary keys and foreign keys
 
@@ -30,6 +32,12 @@ db.define_table('book',
     Field('tags', 'list:reference tag')
     # "condition" & "state" are aparentrly reserved keywords
     
+)
+
+db.define_table('watchlist',
+    Field('user_id', 'reference user_profile'),
+    Field('book_id', 'reference book'),
+    Field('time_watched', type='datetime', default=get_current_time())
 )
 
 # Tags is a table that has a name, and a list of books that contain that tag
