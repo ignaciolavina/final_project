@@ -7,7 +7,7 @@ def get_all_books():
     to_return = []
     for book in books:
         print(book)
-        book['watchlist_status'] = False # Change this to be actually functional lol
+        book['watchlist_status'] = False 
         print(book)
         to_return.append(book)
     return response.json(dict(books=to_return))
