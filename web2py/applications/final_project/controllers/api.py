@@ -102,6 +102,6 @@ def search():
     # each row represent a tag
     for row in query:
         print('row', row.name)
-        res.append(db(db.book.name == row.name))
+        # res.append(db(db.book.name == row.name))
     print ("queryname" ,query)
     return response.json(dict(products_shown=res))
