@@ -3,14 +3,18 @@ def get_logged_in_user():
     return response.json(dict(user=user))
 
 def get_all_books():
+    with_watchlist = (request.vars.with_watchlist == 'true')
+    print(type(with_watchlist))
     books = db(db.book).select()
-    to_return = []
-    for book in books:
-        print(book)
-        book['watchlist_status'] = False 
-        print(book)
-        to_return.append(book)
-    return response.json(dict(books=to_return))
+    if (with_watchlist == True):
+        to_return = []
+        # Iterate back through the books to give their watchlist status for the current user
+        for book in books:
+            book['watchlist_status'] = False 
+            to_return.append(book)
+        return response.json(dict(books=to_return))
+    else:
+        return response.json(dict(books=books))
 
 def toggle_watchlist():
     return response.json(dict())

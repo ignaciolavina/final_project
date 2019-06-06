@@ -8,7 +8,11 @@ let onPageLoad = function () {
 
 // Function to retrieve all the books to display in the dashboard
 let getAllBooks = function () {
-    $.getJSON(getAllBooksUrl, function (response) {
+    $.getJSON(getAllBooksUrl, {
+        // Whether we want a watchlist icon appended to these or not
+        with_watchlist: true
+    },
+        function (response) {
         app.books = response.books;
         processBooks();
     });

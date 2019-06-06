@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <!-- Books (dinamic disposition) -->
+  <!-- Books (dynamic disposition) -->
   <div class="container-fluid">
     <div class="row">
       <div v-for="book in books">
@@ -30,7 +30,7 @@
           <div class="book-container">
             <div class="book-title">${ book.title }</div>
             <!-- Watchlist div -->
-            <div v-if="loggedInUser != undefined">
+            <div v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
               <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">
                 <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon" aria-hidden="true"></span>
                 <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon" aria-hidden="true"></span>
