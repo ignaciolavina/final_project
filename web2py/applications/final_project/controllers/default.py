@@ -10,7 +10,7 @@ def index():
     return dict()
 
 def books():
-    db.book.id.readable = db.book.id.writable = False
+    # db.book.id.readable = db.book.id.writable = False
     grid = SQLFORM.grid(
         db.book,
         create= True,
@@ -23,6 +23,12 @@ def books():
 # form for adding a new book
 def new_book():
     return dict()
+
+def clear():
+    db(db.book).delete()
+    db(db.tags).delete()
+    return "tags db deleted"
+
 
 # NOT Working properly
 # @auth.requires_login
@@ -50,9 +56,12 @@ def profile():
 # Just for testing purposes, for checking the list of tags
 # do /default/tags on the browser
 def tags():
-    db.tags.id.readable = db.tags.id.writable = False
+    # db.tags.id.readable = db.tags.id.writable = False
+    query = db.tags
+    # fields = (db.tags.name)
     grid = SQLFORM.grid(
-        db.tags,
+        query,
+        # fields = fields,
         create= True,
         editable = True,
         csv=False

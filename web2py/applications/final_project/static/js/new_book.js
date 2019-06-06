@@ -19,23 +19,27 @@ let add_tag = function () {
 
 let save_new_book = function () {
     console.log("save book");
-    dict = {
-        tagy: app.tags
-    }
+    // Testing only
+    let testing_list = ['tag1', 'tag2'];
+
     $.post(save_new_book_url, {
         // Book atributes
         title: app.book_title,
         topic: app.book_topic,
         // List of tags
-        tags: app.tags,
-        tagy: dict
+        tags: app.tags
+        // Only for testing!
+        // title: 'bookX',
+        // topic: 'topic_test',
+        // tags: testing_list
+
         // User
         //user: ...
     }, function (response) {
 
         // for implementing a sping load bar
         setTimeout(function () {
-            alert("Book added correctly!");
+            // alert("Book added correctly!");
             // yourReview.hasBeenSaved = false;
         }, 1000);
     }

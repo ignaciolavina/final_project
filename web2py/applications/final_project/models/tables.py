@@ -27,7 +27,7 @@ db.define_table('book',
     Field('description', type='text', default=''),
     Field('book_condition', default=''),
     # Field('taggi', format='%(name)s'),
-    Field('tags', 'list:reference tag')
+    # Field('tags', 'list:reference tag')
     # "condition" & "state" are aparentrly reserved keywords
     
 )
@@ -35,7 +35,10 @@ db.define_table('book',
 # Tags is a table that has a name, and a list of books that contain that tag
 db.define_table('tags',
     Field('name',  type='string', default=''), # Primary key?! SO no two tags with same name
-    Field('books','list:reference book'),
+    # Field('books', 'list:reference book')
+    Field('books', 'list:reference book'), #,
+    Field('test_field', 'string') #,
+    # primarykey = ['name']
 )
 
 
