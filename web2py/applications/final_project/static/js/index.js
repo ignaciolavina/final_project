@@ -36,7 +36,8 @@ let do_search = function () {
         function (data) {
             app.strings = data.strings;
             // self.vue.products = data.products;
-            app.books = data.strings;
+            app.books = data.books;
+
         });
 };
 

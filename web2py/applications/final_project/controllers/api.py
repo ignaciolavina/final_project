@@ -80,9 +80,9 @@ def save_new_book():
 # And retrieves only the products that match part of that string
 def search():
     tags = db(db.tags).select()
-    # products = db(db.product).select()
     # Obtaining the string of the search var from the request vars
     s = request.vars.search_string or ''
+
     # list of products to send back from the server
     res = []
     # Iterating though all the products
@@ -100,8 +100,14 @@ def search():
             #     res.append(db(db.book.id == b))
 
     # each row represent a tag
+    list_of_book_ids = []
     for row in query:
-        print('row', row.name)
+        print('row', row.books)
+        for b in row.books:
+            print('id founded', b)
+            res.append(db(db.book.id == b).select().first())
         # res.append(db(db.book.name == row.name))
+    for r in res:
+        print('r', r)
     print ("queryname" ,query)
-    return response.json(dict(products_shown=res))
+    return response.json(dict(books=res))
