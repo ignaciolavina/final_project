@@ -16,7 +16,22 @@ def get_all_books():
     else:
         return response.json(dict(books=books))
 
+# Function to toggle to presence of a user_book in the db
 def toggle_watchlist():
+    book_id = request.vars.book_id
+    # Get the current user's ID from the DB
+    user_email = request.vars.user_email
+    if (user_email == None):
+        print("ERROR: No user email found!")
+    # Get the current status of the book in the DB
+    query = db((db.watchlist.user_email == user_email) & (db.watchlist.book_id == book_id))
+    current_book_watchlist = query.select().first()
+    # If in the DB, we remove it
+    if (current_book_watchlist != None):
+        query.delete()
+    # If not in the DB, we add it
+    else:
+        db.watchlist.insert(user_email = user_email, book_id = book_id)
     return response.json(dict())
 
 # Missing all validation

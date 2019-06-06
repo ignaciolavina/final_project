@@ -12,7 +12,7 @@ def get_current_time():
 # TO DO, Set primary keys and foreign keys
 
 
-# Check if we need it for display the user profile
+# Check if we need it for display the user profile CURRENTLY UNUSED
 db.define_table('user_profile',
             Field('user_email',  default=get_user_email()),
             Field('user_name',  default=get_name())
@@ -35,7 +35,7 @@ db.define_table('book',
 )
 
 db.define_table('watchlist',
-    Field('user_id', 'reference user_profile'),
+    Field('user_email', default=get_user_email()),
     Field('book_id', 'reference book'),
     Field('time_watched', type='datetime', default=get_current_time())
 )
