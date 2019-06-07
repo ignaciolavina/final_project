@@ -111,14 +111,14 @@ def save_profile():
     user = request.vars.user
     print("requests" , request.vars)
     print("requests userz" , request.vars.user)
-    # print (user.last_name)
+    print (user.last_name)
     auth.user.last_name = request.vars.string
     # auth.user.first_name = request.vars.user.first_name 
     print ("auth user", auth.user.last_name)
     
     query = db(db.auth_user.id == auth.user_id).select().first()
     # db(db.auth_user.id == auth.user_id)
-    query.update_record(last_name="leruki")
+    query.update_record(last_name=request.vars.string)
     print ("query:", query.last_name)
     
     return response.json(dict())
