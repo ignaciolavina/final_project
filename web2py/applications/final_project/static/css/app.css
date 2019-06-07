@@ -1,5 +1,11 @@
- /* FOR NEW BOOK PAGE */
-
+ /* FOR PROFILE PAGE */
+ .avatar {
+    margin-top: 20px;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
 
 
 
