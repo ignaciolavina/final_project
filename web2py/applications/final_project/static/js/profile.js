@@ -6,7 +6,7 @@ let fill_placeholders = function () {
     placeholder_email = app.user.email;
     placeholder_info = 'user info';
 
-    document.getElementById("username").placeholder = app.user.first_name;
+    // document.getElementById("username").placeholder = app.user.first_name;
 
     console.log('filling placeholders');
     console.log('user_inside');
@@ -15,7 +15,6 @@ let fill_placeholders = function () {
 
 let onPageLoad = function () {
     getLoggedInUser(function () {
-        console.log('dd');
     });
     // fill_placeholders();
 };
@@ -29,12 +28,15 @@ let getLoggedInUser = function (callback) {
 };
 
 let update_profile = function () {
-    // document.getElementById("username").placeholder = "Type name here..";
+    console.log(app.user.name)
+
+    // document.getElementById("username").placeholder = app.user.first_name;
+    // document.getElementById("lastname2").placeholder = "rsfdzx";
     app.updating_profile = true;
 }
 
 let save_profile = function () {
-    fill_placeholders();
+    // fill_placeholders();
     app.updating_profile = false;
 }
 
