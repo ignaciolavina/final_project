@@ -4,6 +4,7 @@
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
     let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
+    let save_profile_url = "{{ = URL('api', 'save_profile') }}";
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
@@ -15,10 +16,10 @@
             <img src="../static/images/avatar.png" alt="Avatar" class="avatar">
 
             <!-- <p> ${updating_profile}</p> -->
+            {{ =name}}
         </div>
 
         <!-- Profile info -->
-
         <div v-if="!updating_profile" class="col-md-8">
             <div class="card">
                 <div class="card-body">
@@ -87,17 +88,19 @@
                                 <div class="form-group row">
                                     <label for="username" class="col-4 col-form-label">User Name</label>
                                     <div class="col-8">
-                                        <input id="username" name="username" placeholder={{ =name}}
-                                            class="form-control here" required="required" type="text">{{ =name}}
+                                        <input id="username" v-model="vmodel_first_name" name="username"
+                                            placeholder={{ =name.first_name}} class="form-control here"
+                                            required="required" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lastname" class="col-4 col-form-label">Last Name</label>
                                     <div class="col-8">
-                                        <input id="lastname" name="lastname" placeholder="last name"
-                                            class="form-control here" type="text">
+                                        <input id="lastname" v-model="vmodel_last_name" name="lastname"
+                                            placeholder="last name" class="form-control here" type="text">
                                     </div>
                                 </div>
+                                <!-- Should we be able to edit email? -->
                                 <div class="form-group row">
                                     <label for="email" class="col-4 col-form-label">Email*</label>
                                     <div class="col-8">
@@ -108,8 +111,8 @@
                                 <div class="form-group row">
                                     <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
                                     <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4"
-                                            class="form-control"></textarea>
+                                        <textarea id="publicinfo" v-model="vmodel_public_info" name="publicinfo"
+                                            cols="40" rows="4" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </form>

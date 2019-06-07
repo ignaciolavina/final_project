@@ -32,8 +32,17 @@ def clear():
     return "tags db deleted"
 
 
+def first():
+    if request.vars.visitor_name:
+        session.visitor_name = request.vars.visitor_name
+        redirect(URL('second'))
+    return dict()
+    
+def second():
+    return "redirection"
+
 # NOT Working properly
-# @auth.requires_login
+@auth.requires_login()
 def profile():
     user = auth.user
 
@@ -43,7 +52,7 @@ def profile():
     # return dict(message='hello %(first_name)s' % auth.user)
     # string = auth.user.email
     # user = db(db.user_profile.user_email == auth.user.email).select().first()
-    return dict(name = "uco")
+    return dict(name = user)
 
 
 # Just for testing purposes, for checking the list of tags

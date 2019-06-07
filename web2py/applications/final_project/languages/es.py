@@ -247,6 +247,7 @@
 'invalid ticket': 'Tiquete inválido',
 'Is Active': 'Está Activo',
 'Key': 'Llave',
+'kk': 'kk',
 'language file "%(filename)s" created/updated': 'archivo de lenguaje "%(filename)s" creado/actualizado',
 'Language files (static strings) updated': 'Archivos de lenguaje (cadenas estáticas) actualizados',
 'languages': 'lenguajes',

@@ -11,7 +11,7 @@ let fill_placeholders = function () {
     console.log('filling placeholders');
     console.log('user_inside');
     console.log(app.user);
-}
+};
 
 let onPageLoad = function () {
     getLoggedInUser(function () {
@@ -29,16 +29,32 @@ let getLoggedInUser = function (callback) {
 
 let update_profile = function () {
     console.log(app.user.name)
-
-    // document.getElementById("username").placeholder = app.user.first_name;
-    // document.getElementById("lastname2").placeholder = "rsfdzx";
     app.updating_profile = true;
-}
+
+};
+
 
 let save_profile = function () {
     // fill_placeholders();
     app.updating_profile = false;
-}
+    console.log("profile saved");
+    app.user.first_name = "vmodel_first_name;"
+    app.user.last_name = app.vmodel_last_name;
+
+    $.post(save_profile_url, {
+        user: app.user,
+        string: "string_sent"
+    }, function (response) {
+
+        // for implementing a sping load bar
+        setTimeout(function () {
+            // $('user updated').hide();
+
+            // alert("Book added correctly!");
+            // yourReview.hasBeenSaved = false;
+        }, 1000);
+    })
+};
 
 let app = new Vue({
     el: "#profile_page",
@@ -46,10 +62,10 @@ let app = new Vue({
     unsafeDelimiters: ['!{', '}'],
     data: {
         user: '',
-        placeholder_first_name: '',
-        placeholder_last_name: '',
-        placeholder_email: '',
-        placeholder_info: '',
+        vmodel_first_name: '',
+        vmodel_last_name: '',
+        // placeholder_email: '',
+        vmodel_public_info: '',
         updating_profile: false
     },
     methods: {
