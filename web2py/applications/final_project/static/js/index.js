@@ -41,6 +41,10 @@ let do_search = function () {
         });
 };
 
+let hover_card = function () {
+    console.log("hover")
+};
+
 let app = new Vue({
     el: "#app",
     delimiters: ['${', '}'],
@@ -50,7 +54,7 @@ let app = new Vue({
         search_string: ''
     },
     methods: {
-
+        hover_card: hover_card
     }
 });
 

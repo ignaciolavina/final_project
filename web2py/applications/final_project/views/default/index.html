@@ -25,7 +25,8 @@
   <div class="container-fluid">
     <div class="row">
       <div v-for="book in books">
-        <div class="container book-card">
+        <div class="container book-card" v-on:mouseenter="hover_card">
+          <!-- v-on:click="hover_card"  mouseover -->
           <!-- <div class="card " style="width: 22rem;"> -->
           <img class="card-img-top" src="../static/images/book.png" alt="Card image cap">
           <div class="card-body" style="background-color:azure">
