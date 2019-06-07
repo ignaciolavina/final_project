@@ -43,7 +43,7 @@ def profile():
     # return dict(message='hello %(first_name)s' % auth.user)
     # string = auth.user.email
     # user = db(db.user_profile.user_email == auth.user.email).select().first()
-    return dict()
+    return dict(name = "uco")
 
 
 # Just for testing purposes, for checking the list of tags
