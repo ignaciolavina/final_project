@@ -1,5 +1,5 @@
 def get_logged_in_user():
-    user = None if auth.user is None else auth.user.email
+    user = None if auth.user is None else auth.user
     return response.json(dict(user=user))
 
 def get_all_books():
