@@ -9,7 +9,8 @@ def get_all_books():
         to_return = []
         # Iterate back through the books to give their watchlist status for the current user
         for book in books:
-            book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
+            if (book != None):
+                book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
             to_return.append(book)
         return response.json(dict(books=to_return))
     else:

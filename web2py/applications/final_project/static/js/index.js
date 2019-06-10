@@ -10,7 +10,7 @@ let onPageLoad = function () {
 let getAllBooks = function () {
     $.getJSON(getAllBooksUrl, {
         // Whether we want a watchlist icon appended to these or not
-        with_watchlist: true
+        with_watchlist: (app.loggedInUser != undefined)
     },
         function (response) {
         app.books = response.books;
