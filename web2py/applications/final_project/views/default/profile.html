@@ -89,8 +89,7 @@
                                     <label for="username" class="col-4 col-form-label">User Name</label>
                                     <div class="col-8">
                                         <input id="username" v-model="vmodel_first_name" name="username"
-                                            placeholder={{ =name.first_name}} class="form-control here"
-                                            required="required" type="text">
+                                            class="form-control here" required="required" type="text" value="rsdz">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -115,12 +114,12 @@
                                             cols="40" rows="4" class="form-control"></textarea>
                                     </div>
                                 </div>
+                                <button v-on:click="save_profile" name="submit" type="submit"
+                                    class="btn btn-primary profile_btn">Save</button>
                             </form>
                         </div>
                     </div>
 
-                    <button v-on:click="save_profile" name="submit" type=""
-                        class="btn btn-primary profile_btn">Save</button>
                 </div>
             </div>
         </div>

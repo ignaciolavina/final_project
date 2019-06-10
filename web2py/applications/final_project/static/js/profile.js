@@ -35,19 +35,20 @@ let update_profile = function () {
 
 
 let save_profile = function () {
-    // fill_placeholders();
     app.updating_profile = false;
-    console.log("profile saved");
     app.user.first_name = "vmodel_first_name;"
     app.user.last_name = app.vmodel_last_name;
 
     $.post(save_profile_url, {
         user: app.user,
-        string: "string_sent"
+        last_name: app.last_name,
+        first_name: app.first_name
     }, function (response) {
 
         // for implementing a sping load bar
         setTimeout(function () {
+
+            console.log("profile saved");
             // $('user updated').hide();
 
             // alert("Book added correctly!");

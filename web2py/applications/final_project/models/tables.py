@@ -4,7 +4,7 @@ def get_user_email():
     return None if auth.user is None else auth.user.email
 
 def get_name():
-    return None if auth.user is None else auth.user.first_name + ' ' + auth.user.last_name
+    return None if auth.user is None else auth.user.first_name # + ' ' + auth.user.last_name
 
 
 # TO DO, Set primary keys and foreign keys
