@@ -22,7 +22,11 @@ let onPageLoad = function () {
 let getLoggedInUser = function (callback) {
     $.getJSON(getLoggedInUserUrl, function (response) {
         app.user = response.user;
-        console.log(app.user);
+        console.log("app.user", app.user);
+        vmodel_first_name = app.user.first_name;
+        vmodel_last_name = app.user.last_name;
+        console.log("vmodel")
+        console.log(vmodel_last_name)
         callback();
     });
 };
@@ -36,7 +40,7 @@ let update_profile = function () {
 
 let save_profile = function () {
     app.updating_profile = false;
-    app.user.first_name = "vmodel_first_name;"
+    app.user.first_name = app.vmodel_first_name;
     app.user.last_name = app.vmodel_last_name;
 
     $.post(save_profile_url, {
@@ -67,7 +71,8 @@ let app = new Vue({
         vmodel_last_name: '',
         // placeholder_email: '',
         vmodel_public_info: '',
-        updating_profile: false
+        updating_profile: false,
+        variable: 'varrr'
     },
     methods: {
         update_profile: update_profile,

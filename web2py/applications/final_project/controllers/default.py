@@ -46,7 +46,8 @@ def second():
 def profile():
     user = auth.user
 
-    print (user.email)
+    print (user.email, user.first_name, user.last_name)
+    
 
     # print( auth.first_name)
     # return dict(message='hello %(first_name)s' % auth.user)

@@ -109,17 +109,20 @@ def search():
 def save_profile():
     print ("saving_profile")
     user = request.vars.user
-    # print("requests" , request.vars)
-    print("requests userz" , request.vars.user)
+    print("requests" , request.vars)
     # print (user.last_name)
-    auth.user.last_name = request.vars.last_name
     # auth.user.first_name = request.vars.user.first_name 
-    print ("auth user", auth.user.last_name)
+    # print ("auth user", auth.user.last_name)
     
     query = db(db.auth_user.id == auth.user_id).select().first()
-    # db(db.auth_user.id == auth.user_id)
-    query.update_record(last_name=request.vars.last_name, first_name=request.vars.first_name)
-    # print ("query:", query.last_name)
+    print("query: ", query)
+    # db(db.auth_user.id == auth.user_id).update(last_name=request.vars.last_name, first_name= request.vars.first_name)
+    db.update(db.auth_user.id == auth.user_id, last_name=request.vars.last_name, first_name= request.vars.first_name)
+
+    # db.auth_user.update(db.auth_user.id == auth.user_id, last_name="my new")
+    # query.update_record(last_name=request.vars.last_name)
+    # , first_name=request.vars.first_name)
+    print ("auth:", auth.user)
     
     return response.json(dict())
 
