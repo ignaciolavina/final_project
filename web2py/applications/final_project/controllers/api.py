@@ -113,6 +113,7 @@ def save_profile():
     last_name = request.vars.last_name
     first_name = request.vars.first_name
     
+    auth.user.first_name = first_name
     # Selecting the user to update
     query = db(db.auth_user.id == auth.user_id).select().first()
     query.update_record(first_name=first_name, last_name=last_name)

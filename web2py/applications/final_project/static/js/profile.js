@@ -42,17 +42,20 @@ let save_profile = function () {
     app.updating_profile = false;
     app.user.first_name = app.vmodel_first_name;
     app.user.last_name = app.vmodel_last_name;
+    console.log("wrsdvzxdx")
+    console.log(app.vmodel_first_name)
 
     $.post(save_profile_url, {
         user: app.user,
-        last_name: app.last_name,
-        first_name: app.first_name
+        first_name: app.vmodel_first_name,
+        last_name: app.vmodel_last_name
     }, function (response) {
 
         // for implementing a sping load bar
         setTimeout(function () {
 
             console.log("profile saved");
+            // document.getElementById("main_user").innerHTML = app.vmodel_first_name;
             // $('user updated').hide();
 
             // alert("Book added correctly!");
