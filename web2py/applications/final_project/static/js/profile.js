@@ -23,10 +23,8 @@ let getLoggedInUser = function (callback) {
     $.getJSON(getLoggedInUserUrl, function (response) {
         app.user = response.user;
         console.log("app.user", app.user);
-        vmodel_first_name = app.user.first_name;
-        vmodel_last_name = app.user.last_name;
-        console.log("vmodel")
-        console.log(vmodel_last_name)
+        app.vmodel_first_name = app.user.first_name;
+        app.vmodel_last_name = app.user.last_name;
         callback();
     });
 };
@@ -39,29 +37,32 @@ let update_profile = function () {
 
 
 let save_profile = function () {
-    app.updating_profile = false;
-    app.user.first_name = app.vmodel_first_name;
-    app.user.last_name = app.vmodel_last_name;
-    console.log("wrsdvzxdx")
-    console.log(app.vmodel_first_name)
+    if (app.vmodel_first_name == "" || app.vmodel_last_name == "") {
+        alert("user data can not be empty");
+    } else {
+        app.updating_profile = false;
+        app.user.first_name = app.vmodel_first_name;
+        app.user.last_name = app.vmodel_last_name;
 
-    $.post(save_profile_url, {
-        user: app.user,
-        first_name: app.vmodel_first_name,
-        last_name: app.vmodel_last_name
-    }, function (response) {
+        console.log("wrsdvzxdx")
+        console.log(app.vmodel_first_name)
 
-        // for implementing a sping load bar
-        setTimeout(function () {
+        $.post(save_profile_url, {
+            user: app.user,
+            first_name: app.vmodel_first_name,
+            last_name: app.vmodel_last_name
+        }, function (response) {
 
-            console.log("profile saved");
-            // document.getElementById("main_user").innerHTML = app.vmodel_first_name;
-            // $('user updated').hide();
+            // for implementing a sping load bar
+            setTimeout(function () {
 
-            // alert("Book added correctly!");
-            // yourReview.hasBeenSaved = false;
-        }, 1000);
-    })
+                console.log("profile saved");
+                // document.getElementById("main_user").innerHTML = app.vmodel_first_name;
+                // $('user updated').hide();
+
+            }, 1000);
+        })
+    }
 };
 
 let app = new Vue({
@@ -72,10 +73,8 @@ let app = new Vue({
         user: '',
         vmodel_first_name: '',
         vmodel_last_name: '',
-        // placeholder_email: '',
         vmodel_public_info: '',
-        updating_profile: false,
-        variable: 'varrr'
+        updating_profile: false
     },
     methods: {
         update_profile: update_profile,
