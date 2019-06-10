@@ -1,12 +1,14 @@
 {{extend 'layout.html'}}
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<link href="{{ = URL('static', '/open-iconic-master/font/css/open-iconic-bootstrap.css')}}" rel="stylesheet">
 <script src="{{ = URL('static','js/vue.min.js') }}"></script>
 
 <script>
   let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
   let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
-  var search_url = "{{=URL('api', 'search', user_signature=True, hash_vars=False)}}";
+  let search_url = "{{=URL('api', 'search', user_signature=True, hash_vars=False)}}";
+  let toggle_watchlist_url = "{{ = URL('api', 'toggle_watchlist') }}";
 </script>
 
 <div id="app">
@@ -29,6 +31,15 @@
           <!-- v-on:click="hover_card"  mouseover -->
           <!-- <div class="card " style="width: 22rem;"> -->
           <img class="card-img-top" src="../static/images/book.png" alt="Card image cap">
+          <!-- Watchlist div -->
+          <div v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
+            <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">
+              <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
+                aria-hidden="true"></span>
+              <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon"
+                aria-hidden="true"></span>
+            </button>
+          </div>
           <div class="card-body" style="background-color:azure">
             <h5 class="card-title">${ book.title }</h5>
             <a href="./index.html" class="text">@author</a>
@@ -45,11 +56,9 @@
             </div>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <script src="{{ = URL('static/js', 'index.js') }}"></script>
