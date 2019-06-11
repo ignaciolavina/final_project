@@ -9,6 +9,8 @@
 def index():
     return dict()
 
+
+@auth.requires_login()
 def new_book3():
     return dict()
 
