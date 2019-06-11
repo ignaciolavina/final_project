@@ -3,9 +3,9 @@
 
 <div>
     <h1>Edit book</h1>
+    {{ = book}}
 </div>
 <br><br>
-
 
 <div id="vue_new_book" class="container">
     <div class="row">
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input type="text" class="form-control" placeholder="title" v-model="book_title"
-                                            required>
+                                            value="{{ = book.title}}" required>
                                     </div>
                                 </div>
                                 <hr>
@@ -56,14 +56,14 @@
                                     <label for="" class="col-2 col-form-label">Author</label>
                                     <div class="col-10">
                                         <input id="book_author" placeholder="Author" v-model="book_author"
-                                            class="form-control here" type="text">
+                                            class="form-control here" type="text" value="{{ = book.author}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-2 col-form-label">Price</label>
                                     <div class="col-3">
                                         <input id="book_price" placeholder="$" v-model="book_price"
-                                            class="form-control here" type="number" min="0">
+                                            class="form-control here" type="number" min="0" value="{{ = book.price}}">
                                     </div>
                                     <label for="" class="col-2 col-form-label">Condition</label>
                                     <div class="col-3">
@@ -83,12 +83,12 @@
                                     <label for="" class="col-2 col-form-label">Course</label>
                                     <div class="col-3">
                                         <input id="book_course" placeholder="cmps183" v-model="book_course"
-                                            class="form-control here" type="text">
+                                            class="form-control here" type="text" value="{{ = book.course}}">
                                     </div>
                                     <label for="" class="col-2 col-form-label">Topic</label>
                                     <div class="col-3">
                                         <input id="book_topic" placeholder="topic" v-model="book_topic"
-                                            class="form-control here" type="text">
+                                            class="form-control here" type="text" value="{{ = book.topic}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -96,7 +96,8 @@
                                     <div class="col-9">
                                         <textarea class="form-control" aria-label="With textarea"
                                             placeholder="Please, describe the book to help other users" cols="40"
-                                            rows="4" v-model="book_description"></textarea>
+                                            rows="4" v-model="book_description"
+                                            value="{{ = book.description}}"></textarea>
                                     </div>
 
 
