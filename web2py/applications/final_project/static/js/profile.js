@@ -16,11 +16,12 @@ let fill_placeholders = function () {
 let onPageLoad = function () {
     getLoggedInUser(function () {
     });
+    get_user_books();
     // fill_placeholders();
 };
 
 let getLoggedInUser = function (callback) {
-    $.getJSON(getLoggedInUserUrl, function (response) {
+    $.getJSON(get_logged_in_user_url, function (response) {
         app.user = response.user;
         console.log("app.user", app.user);
         app.vmodel_first_name = app.user.first_name;
@@ -35,6 +36,14 @@ let update_profile = function () {
 
 };
 
+let get_user_books = function () {
+    $.getJSON(get_user_books_url, function (response) {
+        console.log("response get_user_books");
+        console.log(response);
+        app.user_books = response.books;
+
+    });
+}
 
 let save_profile = function () {
     if (app.vmodel_first_name == "" || app.vmodel_last_name == "") {
@@ -74,13 +83,15 @@ let app = new Vue({
         vmodel_first_name: '',
         vmodel_last_name: '',
         vmodel_public_info: '',
-        updating_profile: false
+        updating_profile: false,
+        user_books: []
     },
     methods: {
         update_profile: update_profile,
         save_profile: save_profile,
-        fill_placeholders: fill_placeholders
-        // getLoggedInUser: getLoggedInUser
+        fill_placeholders: fill_placeholders,
+        get_user_books: get_user_books,
+        getLoggedInUser: getLoggedInUser
     }
 });
 

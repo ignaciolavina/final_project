@@ -128,4 +128,10 @@ def save_profile():
     
     return response.json(dict())
 
-
+def get_user_books():
+    books = []
+    rows = db(db.book_owner.user_id == auth.user.id).select()
+    for row in rows:
+        book_ret = db(db.book.id == row.book_id).select().first()
+        books.append(book_ret)
+    return response.json(dict(books = books))

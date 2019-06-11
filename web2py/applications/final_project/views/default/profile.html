@@ -3,8 +3,9 @@
 
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-    let getLoggedInUserUrl = "{{ = URL('api', 'get_logged_in_user') }}";
+    let get_logged_in_user_url = "{{ = URL('api', 'get_logged_in_user') }}";
     let save_profile_url = "{{ = URL('api', 'save_profile') }}";
+    let get_user_books_url = "{{ = URL('api', 'get_user_books') }}";
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
@@ -130,7 +131,22 @@
 
 
     </div>
+    <hr>
+    <!-- Books (dinamic disposition) -->
+    <div class="container-fluid">
+        <div class="row">
+            <div v-for="book in user_books">
+                <!-- <div class="container"> -->
+                <div class="col-md">
+                    <div class="book-container">
+                        <div class="book-title">${ book.title }</div>
+                        <div class="book-author">by ${ book.author }</div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{{ = grid}}
 
 <script src="{{ = URL('static/js', 'profile.js') }}"></script>
