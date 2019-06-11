@@ -1,16 +1,18 @@
 // Function that detects user input on each input-form, and add the 
 // correspondent tag, for being stored when click on "Submit"
+
+
 let add_tag = function () {
 
     tags = [];
     // Retrieve from the html the tags that we are interested in
-    tags.push(app.book_title);
-    tags.push(app.book_author);
-    tags.push(app.book_course);
-    tags.push(app.book_topic);
-    tags.push(app.book_tag1);
-    tags.push(app.book_tag2);
-    tags.push(app.book_tag3);
+    tags.push(app.book_title.toLowerCase());
+    tags.push(app.book_author.toLowerCase());
+    tags.push(app.book_course.toLowerCase());
+    tags.push(app.book_topic.toLowerCase());
+    tags.push(app.book_tag1.toLowerCase());
+    tags.push(app.book_tag2.toLowerCase());
+    tags.push(app.book_tag3.toLowerCase());
 
 
     // To avoid store in the database empty tags
@@ -29,9 +31,17 @@ let save_new_book = function () {
     $.post(save_new_book_url, {
         // Book atributes
         title: app.book_title,
+        author: app.book_author,
+        price: app.book_price,
+        book_condition: app.book_condition,
+        course: app.book_course,
         topic: app.book_topic,
-        // List of tags
+        description: app.book_description,
         tags: app.tags
+        // tags: []
+
+        // topic: app.book_topic,
+        // List of tags
         // Only for testing!
         // title: 'bookX',
         // topic: 'topic_test',

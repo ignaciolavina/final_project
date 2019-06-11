@@ -30,10 +30,11 @@ db.define_table('book',
     Field('title', type='string', default=''),
     Field('author', type='string', default=''),
     Field('price', type='float', default=''),
-    Field('edition', type='float', default=''),
-    Field('description', type='text', default=''),
+    Field('edition', type='text', default=''),
+    Field('course', type='text', default=''),
     Field('book_condition', default=''),
-    # Field('taggi', format='%(name)s'),
+    Field('topic', type='text', default=''),
+    Field('description', type='text', default=''),
     Field('tags', 'list:string')
     # "condition" & "state" are aparentrly reserved keywords
     

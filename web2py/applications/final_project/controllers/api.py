@@ -62,10 +62,25 @@ def save_new_book():
     # First, insert the book retreiving the atributes from the request.vars    
     # id_book = db.book.update_or_insert (
     id_book = db.book.insert (
+        # r = request.vars
         title = request.vars.title,
-        # Add the rest of the values ti insert
-        # WARNING! author pointing "topic", change when needed
         author = request.vars.topic,
+        price = request.vars.price,
+        book_condition = request.vars.condition,
+        description = request.vars.description,
+        course = request.vars.course,
+        
+
+
+        #         book_title: app.book_title,
+        # book_author: app.book_author,
+        # book_price: app.book_price,
+        # book_condition: app.book_condition,
+        # book_course: app.book_course,
+        # book_topic: app.book_topic,
+        # book_description: app.book_description,
+        # tags: app.tags
+
         tags = list_of_tags
     )    
     # id_book contains the id of the book that we have just inserted in the db
