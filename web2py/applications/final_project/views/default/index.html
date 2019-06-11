@@ -21,10 +21,13 @@
     </div>
   </div>
   <hr>
-
-  <!-- Books (dinamic disposition) -->
+  
+  <!-- All Books (dinamic disposition) -->
   <div class="container-fluid">
     <div class="row">
+      <div class="container-fluid">
+        <h2>All Books</h2>
+      </div>
       <div v-for="book in books">
         <div class="container book-card" v-on:mouseenter="hover_card">
           <!-- v-on:click="hover_card"  mouseover -->
@@ -39,6 +42,7 @@
                 aria-hidden="true"></span>
             </button>
           </div>
+          <!-- Book body div -->
           <div class="card-body" style="background-color:azure">
             <h5 class="card-title">${ book.title }</h5>
             <a href="./index.html" class="text">@author</a>
