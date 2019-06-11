@@ -312,6 +312,7 @@
 'No databases in this application': 'No hay bases de datos en esta aplicación',
 'No records found': 'No se han encontrado registros',
 'Not authorized': 'No autorizado',
+'not authorized': 'not authorized',
 'Not Authorized': 'Not Authorized',
 'not in': 'no en',
 'Number of entries: **%s**': 'Numero de entradas: **%s**',

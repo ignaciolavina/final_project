@@ -9,6 +9,9 @@
 def index():
     return dict()
 
+def new_book3():
+    return dict()
+
 def books():
     # db.book.id.readable = db.book.id.writable = False
     grid = SQLFORM.grid(
