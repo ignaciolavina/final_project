@@ -47,7 +47,6 @@ def edit_book():
         redirect(URL('index'))
 
     query = db(db.book.id == book_id).select().first() or redirect(URL('index'))
-    print(query.title)
     # record = db.book(query) or redirect(URL('index'))
     record = db.book(query)
     form = SQLFORM(db.book, query)
