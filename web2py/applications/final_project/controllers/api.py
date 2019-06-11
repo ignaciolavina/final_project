@@ -67,21 +67,15 @@ def save_new_book():
         author = request.vars.topic,
         price = request.vars.price,
         book_condition = request.vars.condition,
-        description = request.vars.description,
         course = request.vars.course,
-        
-
-
-        #         book_title: app.book_title,
-        # book_author: app.book_author,
-        # book_price: app.book_price,
-        # book_condition: app.book_condition,
-        # book_course: app.book_course,
-        # book_topic: app.book_topic,
-        # book_description: app.book_description,
-        # tags: app.tags
+        topic = request.vars.topic,
+        description = request.vars.description,
 
         tags = list_of_tags
+
+
+        # tags: app.tags
+
     )    
     # id_book contains the id of the book that we have just inserted in the db
     book = db.book(db.book.id == id_book)
