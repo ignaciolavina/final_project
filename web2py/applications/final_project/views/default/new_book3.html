@@ -11,7 +11,7 @@
 
 
 
-<div id="profile_page" class="container">
+<div id="vue_new_book" class="container">
     <div class="row">
         <div class="col-md-4 ">
             <div class="container" style="text-align: center">
@@ -38,7 +38,7 @@
             <div class="container" style="margin-top:30px">
                 <h3>List of tags</h3>
                 <div v-for="tag in tags">
-                    <span class="badge badge-pill badge-dark">${ tag }</span>
+                    <span class="badge badge-pill badge-dark">${ tag } </span>
                 </div>
             </div>
 
@@ -55,8 +55,8 @@
                                         <h4>Book title</h4>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" placeholder="title"
-                                            v-model="vmodel_title" v-on:input="add_tag">
+                                        <input type="text" class="form-control" placeholder="title" v-model="book_title"
+                                            v-on:input="add_tag">
                                     </div>
                                 </div>
                                 <hr>
@@ -64,24 +64,23 @@
 
 
                                 <div class="form-group row">
-                                    <label for="username" class="col-2 col-form-label">Author</label>
+                                    <label for="" class="col-2 col-form-label">Author</label>
                                     <div class="col-10">
-                                        <input id="book_author" placeholder="Author" v-model="vmodel_author"
+                                        <input id="book_author" placeholder="Author" v-model="book_author"
                                             class="form-control here" type="text" v-on:input="add_tag">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="username" class="col-2 col-form-label">Price</label>
+                                    <label for="" class="col-2 col-form-label">Price</label>
                                     <div class="col-3">
-                                        <input id="book_price" placeholder="$" v-model="vmodel_price"
+                                        <input id="book_price" placeholder="$" v-model="book_price"
                                             class="form-control here" type="number" min="0" v-on:input="add_tag">
                                     </div>
-                                    <label for="username" class="col-2 col-form-label">Condition</label>
+                                    <label for="" class="col-2 col-form-label">Condition</label>
                                     <div class="col-3">
                                         <!-- <input id="book_condition" placeholder="" v-model="vmodel_condition"
                                             class="form-control here" list="condition"> -->
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                            v-model="vmodel_condition">
+                                        <select class="form-control" id="exampleFormControlSelect1">
                                             <!-- <option value="" selected disabled hidden>Choose here</option> -->
                                             <option value="1">New</option>
                                             <option value="2">Semi-new</option>
@@ -92,23 +91,23 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="username" class="col-2 col-form-label">Course</label>
+                                    <label for="" class="col-2 col-form-label">Course</label>
                                     <div class="col-3">
-                                        <input id="book_course" placeholder="cmps183" v-model="vmodel_course"
+                                        <input id="book_course" placeholder="cmps183" v-model="book_course"
                                             class="form-control here" type="text" v-on:input="add_tag">
                                     </div>
-                                    <label for="username" class="col-2 col-form-label">Topic</label>
+                                    <label for="" class="col-2 col-form-label">Topic</label>
                                     <div class="col-3">
-                                        <input id="book_topic" placeholder="topic" v-model="vmodel_topic"
+                                        <input id="book_topic" placeholder="topic" v-model="book_topic"
                                             class="form-control here" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="username" class="col-3 col-form-label">Book description</label>
+                                    <label for="" class="col-3 col-form-label">Book description</label>
                                     <div class="col-9">
                                         <textarea class="form-control" aria-label="With textarea"
                                             placeholder="Please, describe the book to help other users" cols="40"
-                                            rows="4" v-model="vmodel_book_description" v-on:input="add_tag"></textarea>
+                                            rows="4" v-model="book_description" v-on:input="add_tag"></textarea>
                                     </div>
 
 
@@ -120,15 +119,15 @@
                                     <div class="form-group row" style="margin-top:20px">
                                         <label for="username" class="col-2 col-form-label">Other tags</label>
                                         <div class="col-3">
-                                            <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
+                                            <input id="book_tag1" placeholder="optional tag" v-model="book_tag1"
                                                 class="form-control here" type="text" v-on:input="add_tag">
                                         </div>
                                         <div class="col-3">
-                                            <input id="book_tag2" placeholder="optional tag" v-model="vmodel_tag2"
+                                            <input id="book_tag2" placeholder="optional tag" v-model="book_tag2"
                                                 class="form-control here" type="text" v-on:input="add_tag">
                                         </div>
                                         <div class="col-3">
-                                            <input id="book_tag3" placeholder="optional tag" v-model="vmodel_tag3"
+                                            <input id="book_tag3" placeholder="optional tag" v-model="book_tag3"
                                                 class="form-control here" type="text" v-on:input="add_tag">
                                         </div>
                                     </div>
@@ -145,5 +144,11 @@
         </div>
     </div>
 </div>
+<h3>List of tags</h3>
+<div v-for="tag in tags">
+    <span class="badge badge-pill badge-dark">${ tag }</span>
+</div>
+<br>
+</div>
 
-<script src="{{=URL('static', 'js/new_book.js')}}"></script>
+<script src="{{=URL('static', 'js/new_book3.js')}}"></script>
