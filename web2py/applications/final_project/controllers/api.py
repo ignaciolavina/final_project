@@ -19,7 +19,7 @@ def get_all_books():
         return response.json(dict(books=books))
 
 def get_promoted_tags():
-    '''Function that returns a list of strings (tags) that are currently promoted'''
+    '''Function that returns a dict with the json config object'''
     # ------------Path Setup------------------
     absFilePath = os.path.abspath(__file__)                # Absolute Path of the module
     # print(absFilePath)
@@ -31,10 +31,7 @@ def get_promoted_tags():
     path = open(newPath)
     config = json.load(path)
     path.close()
-    # -----------JSON Parsing----------------
-    config
-
-    return response.json(dict())
+    return response.json(dict(config=config))
 
 # Internal function for abstraction
 def is_book_on_watchlist(user_email, book_id):
