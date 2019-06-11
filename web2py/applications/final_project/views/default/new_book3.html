@@ -46,21 +46,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <form>
-                                <h4>Book title</h4>
-                                <input type="text" class="form-control" placeholder="title" v-model="book_title"
-                                    v-on:input="add_tag">
+                                <div class="form-group row">
+                                    <div class="col-3">
+                                        <h4>Book title</h4>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" placeholder="title"
+                                            v-model="vmodel_title" v-on:input="add_tag">
+                                    </div>
+                                </div>
                                 <hr>
 
-                                <div class="form-group">
-                                    <h4>Author</h4>
-                                    <input type="text" class="form-control" placeholder="Author" v-model="book_author"
-                                        v-on:input="add_tag">
-
-                                    <!-- The next deleted for the moment, but includes all the other book atributes -->
-
-                                    <!-- <label for="formGroupExampleInput">Topic</label>
-                                    <input type="text" v-model="book_topic" v-on:input="add_tag" /> -->
-                                </div>
 
 
                                 <div class="form-group row">
@@ -82,6 +78,7 @@
                                             class="form-control here" list="condition"> -->
                                         <select class="form-control" id="exampleFormControlSelect1"
                                             v-model="vmodel_condition">
+                                            <!-- <option value="" selected disabled hidden>Choose here</option> -->
                                             <option value="1">New</option>
                                             <option value="2">Semi-new</option>
                                             <option value="3" selected>Used</option>
@@ -90,6 +87,35 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="username" class="col-2 col-form-label">Course</label>
+                                    <div class="col-3">
+                                        <input id="book_course" placeholder="cmps183" v-model="vmodel_course"
+                                            class="form-control here" type="text">
+                                    </div>
+                                    <label for="username" class="col-2 col-form-label">Topic</label>
+                                    <div class="col-3">
+                                        <input id="book_topic" placeholder="topic" v-model="vmodel_topic"
+                                            class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label for="username" class="col-2 col-form-label">Other tags</label>
+                                    <div class="col-3">
+                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
+                                            class="form-control here" type="text">
+                                    </div>
+                                    <div class="col-3">
+                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
+                                            class="form-control here" type="text">
+                                    </div>
+                                    <div class="col-3">
+                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
+                                            class="form-control here" type="text">
+                                    </div>
+
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="lastname" class="col-4 col-form-label">Last Name</label>
