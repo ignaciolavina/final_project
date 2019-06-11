@@ -18,7 +18,6 @@
     <div class="row justify-content-md-center">
       <h3>Search:</h3>
       <input type="text" class="search-bar" v-model="search_string" v-on:input="do_search">
-
     </div>
   </div>
   <hr>
@@ -30,7 +29,7 @@
         <div class="container book-card" v-on:mouseenter="hover_card">
           <!-- v-on:click="hover_card"  mouseover -->
           <!-- <div class="card " style="width: 22rem;"> -->
-          <img class="card-img-top" src="../static/images/book.png" alt="Card image cap">
+          <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
           <!-- Watchlist div -->
           <div v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
             <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">

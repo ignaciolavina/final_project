@@ -16,8 +16,7 @@
  /* ---------------------------------------- */
  /* FOR INDEX PAGE */
 body {
-    background-color: azure;
-    
+    background-color: white;
     /* background-color: azure; */
     /*background-color: cadetblue; */
 }
@@ -45,6 +44,11 @@ body {
     border: 1px solid #d4d4d4;
     -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
+}
+
+.card-image{
+    max-height: 250px;    
+    max-width: 250px;
 }
 
 .own-tag {
