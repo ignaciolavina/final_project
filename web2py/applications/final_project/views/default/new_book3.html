@@ -49,14 +49,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form>
+                            <form action="">
                                 <div class="form-group row">
                                     <div class="col-3">
                                         <h4>Book title</h4>
                                     </div>
                                     <div class="col-9">
                                         <input type="text" class="form-control" placeholder="title" v-model="book_title"
-                                            v-on:input="add_tag">
+                                            v-on:input="add_tag" required>
                                     </div>
                                 </div>
                                 <hr>
@@ -133,8 +133,10 @@
                                     </div>
                                     <br>
                                     <div class="center" style="margin-top:30px">
-                                        <button v-on:click="save_new_book" type="button"
-                                            class="btn btn-primary col-4">Submit</button>
+                                        <!-- <a href="/"> -->
+                                        <button v-on:click="save_new_book" type="button" class="btn btn-primary col-4"
+                                            value="">Submit</button>
+                                        <!-- </a> -->
                                     </div>
                             </form>
                         </div>
@@ -144,11 +146,8 @@
         </div>
     </div>
 </div>
-<h3>List of tags</h3>
-<div v-for="tag in tags">
-    <span class="badge badge-pill badge-dark">${ tag }</span>
-</div>
 <br>
 </div>
+
 
 <script src="{{=URL('static', 'js/new_book3.js')}}"></script>

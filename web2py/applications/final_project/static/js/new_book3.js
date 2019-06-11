@@ -26,39 +26,39 @@ let add_tag = function () {
 }
 
 let save_new_book = function () {
+
     console.log("save book");
+    if (app.title == "" || app.book_author == "" || app.price == "") {
+        alert("title, author and price must have a value");
+    } else {
 
-    $.post(save_new_book_url, {
-        // Book atributes
-        title: app.book_title,
-        author: app.book_author,
-        price: app.book_price,
-        book_condition: app.book_condition,
-        course: app.book_course,
-        topic: app.book_topic,
-        description: app.book_description,
-        tags: app.tags
-        // tags: []
+        $.post(save_new_book_url, {
+            // Book atributes
+            title: app.book_title,
+            author: app.book_author,
+            price: app.book_price,
+            book_condition: app.book_condition,
+            course: app.book_course,
+            topic: app.book_topic,
+            description: app.book_description,
+            tags: app.tags
+            // tags: []
 
-        // topic: app.book_topic,
-        // List of tags
-        // Only for testing!
-        // title: 'bookX',
-        // topic: 'topic_test',
-        // tags: testing_list
+        }, function (response) {
 
-        // User
-        //user: ...
-    }, function (response) {
+            alert("Book added correctly!");
+            window.location.href = '/';
 
-        // for implementing a sping load bar
-        setTimeout(function () {
-            // alert("Book added correctly!");
-            // yourReview.hasBeenSaved = false;
-        }, 1000);
+            // // for implementing a sping load bar
+            // setTimeout(function () {
+            //     // alert("Book added correctly!");
+            //     // yourReview.hasBeenSaved = false;
+            // }, 1000);
+
+        }
+        )
     }
-    )
-}
+};
 
 
 let getLoggedInUser = function (callback) {
