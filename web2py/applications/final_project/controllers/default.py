@@ -24,33 +24,51 @@ def books():
 def new_book():
     return dict()
 
+def owners():
+    grid = SQLFORM.grid(
+        db.book_owner,
+        create= True,
+        editable = True,
+        csv=False
+    )
+    return dict(grid=grid)
+
+# def user(): return dict(form=auth())
+
 def clear():
     db(db.book).delete()
     db(db.tags).delete()
     return "tags db deleted"
 
 
+def first():
+    if request.vars.visitor_name:
+        session.visitor_name = request.vars.visitor_name
+        redirect(URL('second'))
+    return dict()
+    
+def second():
+    return "redirection"
+
 # NOT Working properly
-# @auth.requires_login
+@auth.requires_login()
 def profile():
-
-    user = db(db.user_profile.user_email == auth.user.email).select().first()
-
-    # If the user is new and is not registered
-    # if user == None:        
-    #     # send to profile with edit = y
-    #     return redirect(URL('default', 'profile_page', vars=dict(
-    #         next=URL('default', 'store'), edit='y')))
-    if (user == None):
-        return "Working on it, not user detected!"
-
-    form = SQLFORM(
-    db.user_profile, user,
-    readonly=True,
-    deletable = False,
-    editable = True
+    user = auth.user
+    print (user.email, user.first_name, user.last_name)
+    
+    query = db(db.book_owner.user_id == user.id)
+    grid = SQLFORM.grid(
+        query,
+        create= True,
+        editable = True,
+        csv = False
     )
-    return dict(form=form)
+
+    # print( auth.first_name)
+    # return dict(message='hello %(first_name)s' % auth.user)
+    # string = auth.user.email
+    # user = db(db.user_profile.user_email == auth.user.email).select().first()
+    return dict(name = user, grid = grid)
 
 
 # Just for testing purposes, for checking the list of tags
@@ -68,11 +86,16 @@ def tags():
     )
     return dict(grid=grid)
 
-# ---- API (example) -----
-@auth.requires_login()
-def api_get_user_email():
-    if not request.env.request_method == 'GET': raise HTTP(403)
-    return response.json({'status':'success', 'email':auth.user.email})
+
+
+# # ---- API (example) -----
+# @auth.requires_login()
+# def api_get_user_email():
+#     if not request.env.request_method == 'GET': raise HTTP(403)
+#     return response.json({'status':'success', 'email':auth.user.email})
+
+
+
 
 # ---- Smart Grid (example) -----
 @auth.requires_membership('admin') # can only be accessed by members of admin groupd

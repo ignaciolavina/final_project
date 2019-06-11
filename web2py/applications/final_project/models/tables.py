@@ -4,7 +4,7 @@ def get_user_email():
     return None if auth.user is None else auth.user.email
 
 def get_name():
-    return None if auth.user is None else auth.user.first_name + ' ' + auth.user.last_name
+    return None if auth.user is None else auth.user.first_name # + ' ' + auth.user.last_name
 
 def get_current_time():
     return datetime.datetime.today
@@ -16,6 +16,11 @@ def get_current_time():
 db.define_table('user_profile',
             Field('user_email',  default=get_user_email()),
             Field('user_name',  default=get_name())
+            )
+
+db.define_table('book_owner',
+            Field('user_id'), # references user?
+            Field('book_id')
             )
 
 db.define_table('book',

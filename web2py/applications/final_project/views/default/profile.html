@@ -1,0 +1,153 @@
+{{ extend 'layout.html' }}
+
+
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    let get_logged_in_user_url = "{{ = URL('api', 'get_logged_in_user') }}";
+    let save_profile_url = "{{ = URL('api', 'save_profile') }}";
+    let get_user_books_url = "{{ = URL('api', 'get_user_books') }}";
+</script>
+
+<link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<!------ Include the above in your HEAD tag ---------->
+
+<div id="profile_page" class="container">
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="container" style="text-align: center">
+                <img src="../static/images/avatar.png" alt="Avatar" class="avatar">
+            </div>
+            <br>
+            <div class="container" style="text-align: center">
+                <h5>${ user.first_name }</h5>
+            </div>
+        </div>
+
+        <!-- Profile info -->
+        <div v-if="!updating_profile" class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Hello ${ user.first_name }!</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">User Name</label>
+                                    <div class="col-8">
+                                        <h5>${user.first_name}</h5>
+                                        <!-- <input id="username" name="username" :placeholder="placeholder_first_name"
+                                            class="form-control here" required="required" type="text" readonly> -->
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                    <div class="col-8">
+                                        <!-- <input id="lastname" name="lastname" :placeholder="placeholder_last_name"
+                                            class="form-control here" type="text" readonly> -->
+                                        <h5>${user.last_name}</h5>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email*</label>
+                                    <div class="col-8">
+                                        <!-- <input id="email" name="email" :placeholder="placeholder_email"
+                                            class="form-control here" required="required" type="text" readonly> -->
+                                        <h5>${user.email}</h5>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
+                                    <div class="col-8">
+                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4"
+                                            class="form-control" readonly></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <button v-on:click="update_profile" name="submit" type="" class="btn btn-primary">Update My
+                                Profile</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div v-if="updating_profile" class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Hello ${ user.first_name }!</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">User Name</label>
+                                    <div class="col-8">
+                                        <input id="username" v-model="vmodel_first_name" name="username"
+                                            class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                    <div class="col-8">
+                                        <input id="lastname" v-model="vmodel_last_name" name="lastname"
+                                            placeholder="last name" class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <!-- Should we be able to edit email? -->
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email*</label>
+                                    <div class="col-8">
+                                        <!-- <input id="email" name="email" placeholder="Email" class="form-control here"
+                                            required="required" type="text"> -->
+                                        <h5>${user.email}</h5>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
+                                    <div class="col-8">
+                                        <textarea id="publicinfo" v-model="vmodel_public_info" name="publicinfo"
+                                            cols="40" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <button v-on:click="save_profile" name="submit" type="submit"
+                                    class="btn btn-primary profile_btn">Save</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <hr>
+    <!-- Books (dinamic disposition) -->
+    <div class="container-fluid">
+        <div class="row">
+            <div v-for="book in user_books">
+                <!-- <div class="container"> -->
+                <div class="col-md">
+                    <div class="book-container">
+                        <div class="book-title">${ book.title }</div>
+                        <div class="book-author">by ${ book.author }</div>
+                        <!-- </div> -->
+                        <button class="btn btn-primary">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ = URL('static/js', 'profile.js') }}"></script>

@@ -1,5 +1,5 @@
 def get_logged_in_user():
-    user = None if auth.user is None else auth.user.email
+    user = None if auth.user is None else auth.user
     return response.json(dict(user=user))
 
 def get_all_books():
@@ -72,6 +72,11 @@ def save_new_book():
     book = db.book(db.book.id == id_book)
     print ("New book stored:", book)
 
+    # *********************ASIGN BOOK TO USER INSERTION************************** #
+    db.book_owner.insert (
+        book_id = id_book,
+        user_id = auth.user.id
+    )
 
     # *********************TAGS INSERTION************************** #
     # print ("list of tags" , list_of_tags)
@@ -144,3 +149,28 @@ def search():
     # for r in result:
     #     print('r', r)
     return response.json(dict(books=result))
+
+def save_profile():
+    print ("saving_profile")
+    user = request.vars.user
+    # print("requests" , request.vars)
+    last_name = request.vars.last_name
+    first_name = request.vars.first_name
+    
+    # auth.user.first_name = first_name
+    # Selecting the user to update
+    query = db(db.auth_user.id == auth.user_id).select().first()
+    query.update_record(first_name=first_name, last_name=last_name)
+    # To change menu
+    auth.user.first_name = first_name
+    print ("auth:", auth.user)
+    
+    return response.json(dict())
+
+def get_user_books():
+    books = []
+    rows = db(db.book_owner.user_id == auth.user.id).select()
+    for row in rows:
+        book_ret = db(db.book.id == row.book_id).select().first()
+        books.append(book_ret)
+    return response.json(dict(books = books))
