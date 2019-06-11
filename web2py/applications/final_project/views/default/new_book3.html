@@ -63,14 +63,14 @@
                                     <label for="username" class="col-2 col-form-label">Author</label>
                                     <div class="col-10">
                                         <input id="book_author" placeholder="Author" v-model="vmodel_author"
-                                            class="form-control here" type="text">
+                                            class="form-control here" type="text" v-on:input="add_tag">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="username" class="col-2 col-form-label">Price</label>
                                     <div class="col-3">
                                         <input id="book_price" placeholder="$" v-model="vmodel_price"
-                                            class="form-control here" type="number" min="0">
+                                            class="form-control here" type="number" min="0" v-on:input="add_tag">
                                     </div>
                                     <label for="username" class="col-2 col-form-label">Condition</label>
                                     <div class="col-3">
@@ -91,7 +91,7 @@
                                     <label for="username" class="col-2 col-form-label">Course</label>
                                     <div class="col-3">
                                         <input id="book_course" placeholder="cmps183" v-model="vmodel_course"
-                                            class="form-control here" type="text">
+                                            class="form-control here" type="text" v-on:input="add_tag">
                                     </div>
                                     <label for="username" class="col-2 col-form-label">Topic</label>
                                     <div class="col-3">
@@ -99,127 +99,45 @@
                                             class="form-control here" type="text">
                                     </div>
                                 </div>
-                                <hr>
                                 <div class="form-group row">
-                                    <label for="username" class="col-2 col-form-label">Other tags</label>
-                                    <div class="col-3">
-                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
-                                            class="form-control here" type="text">
-                                    </div>
-                                    <div class="col-3">
-                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
-                                            class="form-control here" type="text">
-                                    </div>
-                                    <div class="col-3">
-                                        <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
-                                            class="form-control here" type="text">
+                                    <label for="username" class="col-3 col-form-label">Book description</label>
+                                    <div class="col-9">
+                                        <textarea class="form-control" aria-label="With textarea"
+                                            placeholder="Please, describe the book to help other users" cols="40"
+                                            rows="4" v-model="vmodel_book_description" v-on:input="add_tag"></textarea>
                                     </div>
 
-                                </div>
 
-                                <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                                    <div class="col-8">
-                                        <input id="lastname" v-model="vmodel_last_name" name="lastname"
-                                            placeholder="last name" class="form-control here" type="text">
+
+                                    <br>
+                                    <br>
+                                    <!-- List of tags -->
+                                    <hr>
+                                    <div class="form-group row" style="margin-top:20px">
+                                        <label for="username" class="col-2 col-form-label">Other tags</label>
+                                        <div class="col-3">
+                                            <input id="book_tag1" placeholder="optional tag" v-model="vmodel_tag1"
+                                                class="form-control here" type="text" v-on:input="add_tag">
+                                        </div>
+                                        <div class="col-3">
+                                            <input id="book_tag2" placeholder="optional tag" v-model="vmodel_tag2"
+                                                class="form-control here" type="text" v-on:input="add_tag">
+                                        </div>
+                                        <div class="col-3">
+                                            <input id="book_tag3" placeholder="optional tag" v-model="vmodel_tag3"
+                                                class="form-control here" type="text" v-on:input="add_tag">
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Should we be able to edit email? -->
-                                <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label>
-                                    <div class="col-8">
-                                        <!-- <input id="email" name="email" placeholder="Email" class="form-control here"
-                                                required="required" type="text"> -->
-                                        <h5>${user.email}</h5>
+                                    <br>
+                                    <div class="center" style="margin-top:30px">
+                                        <button v-on:click="save_new_book" type="button"
+                                            class="btn btn-primary col-4">Submit</button>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" v-model="vmodel_public_info" name="publicinfo"
-                                            cols="40" rows="4" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <button v-on:click="save_profile" name="submit" type="submit"
-                                    class="btn btn-primary profile_btn">Save</button>
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-
-<div class="container">
-    <div class="">
-        <div>
-            <h1> Add Book</h1>
-        </div>
-        <div id="vue_new_book" class="display:none">
-            <form>
-                <div class="form-group">
-                    <h4>Book title</h4>
-                    <input type="text" class="form-control" placeholder="title" v-model="book_title"
-                        v-on:input="add_tag">
-                    <!-- <label for="formGroupExampleInput">Book title</label> -->
-                    <!-- <input type="text" v-model="book_title" v-on:input="add_tag" /> -->
-                </div>
-                <div class="form-group">
-                    <h4>Topic</h4>
-                    <input type="text" class="form-control" placeholder="title" v-model="book_topic"
-                        v-on:input="add_tag">
-
-                    <!-- The next deleted for the moment, but includes all the other book atributes -->
-
-                    <!-- <label for="formGroupExampleInput">Topic</label>
-                <input type="text" v-model="book_topic" v-on:input="add_tag" /> -->
-                </div>
-                <!-- <div class="form-group">
-                <h4>Author</h4>
-                <input type="text" class="form-control" v-model="book_author" v-on:input="add_tag" />
-            </div>
-            <div class="form-group">
-                <h4>Book condition</h4>
-                <input type="text" class="form-control" v-model="book_condition" v-on:input="add_tag" />
-            </div>
-            <div class="form-group">
-                <h4>Edition</h4>
-                <input type="text" class="form-control" v-model="book_edition" v-on:input="" />
-            </div>
-            <div class="form-group">
-                <h4>Another Label</h4>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-            </div>
-        </form> -->
-
-                <div>
-                    <h4>Book description</h4>
-                </div>
-                <div class="input-group">
-
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Book description</span>
-                    </div>
-                    <textarea class="form-control" aria-label="With textarea"
-                        placeholder="Please, describe the book a bit to help other users"></textarea>
-                </div>
-
-
-                <!-- for display all the tags that are goihg to be stored on the database -->
-                <h3>List of tags</h3>
-                <div v-for="tag in tags">
-                    <span class="badge badge-pill badge-dark">${ tag }</span>
-                </div>
-                <br>
-                <button v-on:click="save_new_book" type="button" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </div>
