@@ -45,15 +45,27 @@ let get_user_books = function () {
     });
 };
 
+// Confirmation function on delete
+let delete_confirmation = function (book) {
+    if (confirm("Are you sure you want to delete the book?")) {
+        delete_book(book);
+    }
+};
+
+
+
 let delete_book = function (book) {
     console.log("delete book function: ");
     console.log(book)
+
+    // window.confirm("Are you sure you want to delete the book?");
 
 
     $.post(delete_user_book_url, {
         book_id: book.id
 
     }, function (response) {
+        window.location.href = '/profile';
     })
 };
 
@@ -104,7 +116,8 @@ let app = new Vue({
         fill_placeholders: fill_placeholders,
         get_user_books: get_user_books,
         getLoggedInUser: getLoggedInUser,
-        delete_book: delete_book
+        delete_book: delete_book,
+        delete_confirmation: delete_confirmation
     }
 });
 

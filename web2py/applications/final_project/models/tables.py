@@ -40,7 +40,8 @@ db.define_table('book',
 db.define_table('book_owner',
             Field('user_id'), # references user?,
             Field('book_id', 'reference book')
-            )
+)
+
 
 db.define_table('watchlist',
     Field('user_email', default=get_user_email()),
