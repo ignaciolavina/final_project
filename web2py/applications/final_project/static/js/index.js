@@ -2,12 +2,14 @@
 // First function called at page load
 let onPageLoad = function () {
     getLoggedInUser(function () {
-        getAllBooks();
+        getAllBooks(function () {
+            getPromotedBooks({});
+        });
     });
 };
 
 // Function to retrieve all the books to display in the dashboard
-let getAllBooks = function () {
+let getAllBooks = function (callback) {
     $.getJSON(getAllBooksUrl, {
         // Whether we want a watchlist icon appended to these or not
         with_watchlist: (app.loggedInUser != undefined)
@@ -15,6 +17,7 @@ let getAllBooks = function () {
         function (response) {
             app.books = response.books;
             processBooks();
+            callback();
         });
 };
 
@@ -34,6 +37,11 @@ let getLoggedInUser = function (callback) {
         callback();
     });
 };
+
+// Function to get the promoted books and display them
+let getPromotedBooks = function () {
+    // Make this work please
+}
 
 let do_search = function () {
     $.getJSON(search_url,
@@ -75,6 +83,7 @@ let app = new Vue({
     unsafeDelimiters: ['!{', '}'],
     data: {
         books: [],
+        promoted_books: [],
         search_string: '',
         loggedInUser: undefined
     },
