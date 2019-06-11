@@ -21,10 +21,13 @@
     </div>
   </div>
   <hr>
-
-  <!-- Books (dinamic disposition) -->
+  
+  <!-- All Books (dinamic disposition) -->
   <div class="container-fluid">
     <div class="row">
+      <div class="container-fluid">
+        <h2>All Books</h2>
+      </div>
       <div v-for="book in books">
         <div class="container book-card" v-on:mouseenter="hover_card">
           <!-- v-on:click="hover_card"  mouseover -->
