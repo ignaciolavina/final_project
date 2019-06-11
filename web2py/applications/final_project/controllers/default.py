@@ -24,6 +24,15 @@ def books():
 def new_book():
     return dict()
 
+def owners():
+    grid = SQLFORM.grid(
+        db.book_owner,
+        create= True,
+        editable = True,
+        csv=False
+    )
+    return dict(grid=grid)
+
 # def user(): return dict(form=auth())
 
 def clear():

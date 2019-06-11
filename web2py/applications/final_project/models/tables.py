@@ -16,6 +16,11 @@ db.define_table('user_profile',
             Field('user_name',  default=get_name())
             )
 
+db.define_table('book_owner',
+            Field('user_id'), # references user?
+            Field('book_id')
+            )
+
 db.define_table('book',
     # User who have created the book
     # "user" a keyword RESERVED

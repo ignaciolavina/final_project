@@ -34,6 +34,11 @@ def save_new_book():
     book = db.book(db.book.id == id_book)
     print ("New book stored:", book)
 
+    # *********************ASIGN BOOK TO USER INSERTION************************** #
+    db.book_owner.insert (
+        book_id = id_book,
+        user_id = auth.user.id
+    )
 
     # *********************TAGS INSERTION************************** #
     # Now, we need to retrieve the list of tags from request.vars

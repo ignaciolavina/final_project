@@ -79,6 +79,7 @@
 'Available Databases and Tables': 'Bases de datos y tablas disponibles',
 'Back': 'Atrás',
 'Book Condition': 'Book Condition',
+'Book Id': 'Book Id',
 'Books': 'Books',
 'Buy this book': 'Compra este libro',
 "Buy web2py's book": 'Compra el libro de web2py',
