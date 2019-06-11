@@ -98,6 +98,10 @@ let save_profile = function () {
     }
 };
 
+let edit_book = function (book) {
+    window.location.href = '/edit_book/' + book.id;
+}
+
 let app = new Vue({
     el: "#profile_page",
     delimiters: ['${', '}'],
@@ -117,7 +121,8 @@ let app = new Vue({
         get_user_books: get_user_books,
         getLoggedInUser: getLoggedInUser,
         delete_book: delete_book,
-        delete_confirmation: delete_confirmation
+        delete_confirmation: delete_confirmation,
+        edit_book: edit_book
     }
 });
 

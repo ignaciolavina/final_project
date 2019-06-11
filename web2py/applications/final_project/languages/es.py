@@ -172,6 +172,7 @@
 'EDIT': 'EDITAR',
 'Edit': 'Editar',
 'Edit application': 'Editar aplicación',
+'edit book': 'edit book',
 'edit controller': 'editar controlador',
 'Edit current record': 'Edite el registro actual',
 'Edit Page': 'Edit Page',

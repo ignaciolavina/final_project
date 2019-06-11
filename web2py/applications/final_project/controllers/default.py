@@ -36,6 +36,23 @@ def book_owner():
     return dict(grid=grid)
 
 
+def edit_book():
+
+    if (request.args):
+        book_id = request.args[0]
+    else:
+        redirect(URL('index'))
+
+    if book_id is None:
+        redirect(URL('index'))
+
+    query = db(db.book.id == book_id).select().first() or redirect(URL('index'))
+
+    # record = db.book(query) or redirect(URL('index'))
+    record = db.book(query)
+    form = SQLFORM(db.book, query)
+    return dict(form = form, book = query)
+
 # form for adding a new book
 def new_book():
     return dict()
