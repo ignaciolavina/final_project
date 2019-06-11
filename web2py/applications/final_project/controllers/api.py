@@ -209,7 +209,7 @@ def delete_user_book():
 
     # deletion book from all the tables
     # Research ON DELETE CASCADE!
-    db(db.book_owner.user_id == auth.user.id, db.book_owner.book_id == book_id).delete()
-    db(db.watchlist.book_id == book_id).delete()
+    # db(db.book_owner.user_id == auth.user.id, db.book_owner.book_id == book_id).delete()
+    # db(db.watchlist.book_id == book_id).delete()
     db(db.book.id == book_id).delete()
 

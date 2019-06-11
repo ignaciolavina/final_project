@@ -18,10 +18,6 @@ db.define_table('user_profile',
             Field('user_name',  default=get_name())
             )
 
-db.define_table('book_owner',
-            Field('user_id'), # references user?
-            Field('book_id')
-            )
 
 db.define_table('book',
     # User who have created the book
@@ -39,6 +35,12 @@ db.define_table('book',
     # "condition" & "state" are aparentrly reserved keywords
     
 )
+
+
+db.define_table('book_owner',
+            Field('user_id'), # references user?,
+            Field('book_id', 'reference book')
+            )
 
 db.define_table('watchlist',
     Field('user_email', default=get_user_email()),
