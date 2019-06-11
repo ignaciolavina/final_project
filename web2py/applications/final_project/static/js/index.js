@@ -13,9 +13,9 @@ let getAllBooks = function () {
         with_watchlist: (app.loggedInUser != undefined)
     },
         function (response) {
-        app.books = response.books;
-        processBooks();
-    });
+            app.books = response.books;
+            processBooks();
+        });
 };
 
 // Processes the books and adds an index to each one
@@ -50,7 +50,7 @@ let hover_card = function () {
     console.log("hover")
 };
 
-let toggle_watchlist = function(bookIndex) {
+let toggle_watchlist = function (bookIndex) {
     let book = app.books[bookIndex];
     let new_status = !book.is_watchlisted;
     book.is_watchlisted = new_status;
