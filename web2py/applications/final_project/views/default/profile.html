@@ -6,6 +6,7 @@
     let get_logged_in_user_url = "{{ = URL('api', 'get_logged_in_user') }}";
     let save_profile_url = "{{ = URL('api', 'save_profile') }}";
     let get_user_books_url = "{{ = URL('api', 'get_user_books') }}";
+    let delete_user_book_url = "{{ = URL('api', 'delete_user_book') }}";
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
@@ -164,7 +165,7 @@
                         </div>
                         <div class="row center">
                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                            <button class="btn btn-dark">Delete</button>
+                            <button class="btn btn-dark" v-on:click="delete_book(book)">Delete</button>
                             <button class="btn btn-primary">Edit</button>
                         </div>
                     </div>

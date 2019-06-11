@@ -43,7 +43,19 @@ let get_user_books = function () {
         app.user_books = response.books;
 
     });
-}
+};
+
+let delete_book = function (book) {
+    console.log("delete book function: ");
+    console.log(book)
+
+
+    $.post(delete_user_book_url, {
+        book_id: book.id
+
+    }, function (response) {
+    })
+};
 
 let save_profile = function () {
     if (app.vmodel_first_name == "" || app.vmodel_last_name == "") {
@@ -91,7 +103,8 @@ let app = new Vue({
         save_profile: save_profile,
         fill_placeholders: fill_placeholders,
         get_user_books: get_user_books,
-        getLoggedInUser: getLoggedInUser
+        getLoggedInUser: getLoggedInUser,
+        delete_book: delete_book
     }
 });
 

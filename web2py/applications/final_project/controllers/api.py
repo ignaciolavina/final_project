@@ -193,6 +193,7 @@ def save_profile():
     
     return response.json(dict())
 
+
 def get_user_books():
     books = []
     rows = db(db.book_owner.user_id == auth.user.id).select()
@@ -200,3 +201,15 @@ def get_user_books():
         book_ret = db(db.book.id == row.book_id).select().first()
         books.append(book_ret)
     return response.json(dict(books = books))
+
+
+def delete_user_book():
+    # retrieveing the book_id from request vars
+    book_id = request.vars.book_id
+
+    # deletion book from all the tables
+    # Research ON DELETE CASCADE!
+    db(db.book_owner.user_id == auth.user.id, db.book_owner.book_id == book_id).delete()
+    db(db.watchlist.book_id == book_id).delete()
+    db(db.book.id == book_id).delete()
+
