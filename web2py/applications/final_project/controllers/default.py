@@ -54,15 +54,21 @@ def second():
 @auth.requires_login()
 def profile():
     user = auth.user
-
     print (user.email, user.first_name, user.last_name)
     
+    query = db(db.book_owner.user_id == user.id)
+    grid = SQLFORM.grid(
+        query,
+        create= True,
+        editable = True,
+        csv = False
+    )
 
     # print( auth.first_name)
     # return dict(message='hello %(first_name)s' % auth.user)
     # string = auth.user.email
     # user = db(db.user_profile.user_email == auth.user.email).select().first()
-    return dict(name = user)
+    return dict(name = user, grid = grid)
 
 
 # Just for testing purposes, for checking the list of tags
