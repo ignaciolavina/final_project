@@ -1,0 +1,17 @@
+{
+    "quarter": "spring",
+    "current_classes": [
+        {
+            "name": "cmps183",
+            "topic": "computer science"
+        },
+        {
+            "name": "lit100",
+            "topic": "literature"
+        },
+        {
+            "name": "spa101",
+            "topic": "spanish"
+        }
+    ]
+}
