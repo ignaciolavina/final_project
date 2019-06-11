@@ -1,3 +1,5 @@
+import os
+
 def get_logged_in_user():
     user = None if auth.user is None else auth.user.email
     return response.json(dict(user=user))
@@ -15,6 +17,20 @@ def get_all_books():
         return response.json(dict(books=to_return))
     else:
         return response.json(dict(books=books))
+
+def get_promoted_tags():
+    '''Function that returns a list of strings (tags) that are currently promoted'''
+    absFilePath = os.path.abspath(__file__)                # Absolute Path of the module
+    # print(absFilePath)
+    fileDir = os.path.dirname(os.path.abspath(__file__))   # Directory of the Module
+    # print(fileDir)
+    parentDir = os.path.dirname(fileDir)                   # Directory of the Module directory
+    # print(parentDir)
+    newPath = os.path.join(parentDir, 'config/config.txt')
+    path = open(newPath)
+    config = json.load(path)
+    path.close()
+    return response.json(dict())
 
 # Internal function for abstraction
 def is_book_on_watchlist(user_email, book_id):
