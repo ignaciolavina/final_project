@@ -20,6 +20,7 @@ def get_all_books():
 
 def get_promoted_tags():
     '''Function that returns a list of strings (tags) that are currently promoted'''
+    # ------------Path Setup------------------
     absFilePath = os.path.abspath(__file__)                # Absolute Path of the module
     # print(absFilePath)
     fileDir = os.path.dirname(os.path.abspath(__file__))   # Directory of the Module
@@ -30,6 +31,9 @@ def get_promoted_tags():
     path = open(newPath)
     config = json.load(path)
     path.close()
+    # -----------JSON Parsing----------------
+    config
+
     return response.json(dict())
 
 # Internal function for abstraction
