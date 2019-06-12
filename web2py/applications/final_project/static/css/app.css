@@ -100,8 +100,18 @@ body {
 .book-title {
     display: inline-block;
     font-style: italic;
-    font-size: 25px;
+    /* font-size: 25px; */
+    flex: 1;
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.flex-parent {
+    display: flex;
+    align-items: center;
+  }
 
 .move-right {
     display: flex;
