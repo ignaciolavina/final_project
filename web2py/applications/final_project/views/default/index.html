@@ -71,10 +71,11 @@
         <h2>All Books</h2>
       </div>
       <div v-for="book in books">
-        <div class="container book-card" v-on:mouseenter="hover_card" style="background-color:azure; height:600px">
+        <div class="container book-card" v-on:mouseenter="hover_card" style="background-color:azure; min-height:600px">
           <!-- Watchlist div -->
-          <div v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
-            <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">
+          <div class="d-flex justify-content-end"
+            v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
+            <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)" style="margin:10px">
               <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
                 aria-hidden="true"></span>
               <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon"
