@@ -35,6 +35,22 @@ def book_owner():
     )
     return dict(grid=grid)
 
+def view_book():
+    if (request.args):
+        book_id = request.args[0]
+    else:
+        redirect(URL('index'))
+    
+    # Retrieveing the book and the owner to send to the view
+    book = db(db.book.id == book_id).select().first()
+    owner_id = db(db.book_owner.book_id == book_id).select().first().user_id
+    owner =  query = db(db.auth_user.id == owner_id).select().first()
+    email= owner.email
+
+    if (book is None):
+        redirect(URL('index'))
+    return dict(book = book, tags=book.tags, owner=owner, email= email)
+
 
 def edit_book():
 

@@ -30,7 +30,8 @@
         <h2>Books for current classes!</h2>
       </div>
       <div v-for="book in promoted_books">
-        <div class="container book-card" v-on:mouseenter="hover_card" style="background-color:azure; min-height:600px">
+
+        <div class="container book-card" style="background-color:azure; min-height:650px">
           <!-- Watchlist div -->
           <div class="d-flex justify-content-end"
             v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
@@ -41,8 +42,6 @@
                 aria-hidden="true"></span>
             </button>
           </div>
-          <!-- v-on:click="hover_card"  mouseover -->
-          <!-- <div class="card " style="width: 22rem;"> -->
           <div class="d-flex justify-content-md-center">
 
             <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
@@ -57,9 +56,14 @@
                 <h5 class="flex-parent card-title">${ book.title }</h5>
               </div>
             </div>
-            <div class="d-flex justify-content-start">
-              <b>Author: &nbsp</b>
-              <p>${book.author}</p>
+            <div class="d-flex justify-content-between">
+              <div>
+                <b>Author: &nbsp ${book.author}</b>
+              </div>
+              <div>
+                <b v-if="book.price">&emsp; Price: ${book.price} $</b>
+                <b v-else>&emsp; Not price</b>
+              </div>
             </div>
             <div v-if="!book.description">
               <b>Description: </b>
@@ -69,16 +73,15 @@
             <div v-else>
               <p class="max-lines">${ book.description }</p>
             </div>
-            <div class="d-flex justify-content-between">
-              <a href="./index.html" class="text">@owner</a>
-              <b v-if="book.price">&emsp; Price: ${book.price} $</b>
-              <b v-else>&emsp; Not price</b>
-            </div>
             <h5>Tags:</h5>
             <div v-if="book.tags" class="d-flex justify-content-start flex-wrap">
               <div v-for="tag in book.tags">
                 <span class="badge badge-pill badge-dark own-badge">${ tag }</span>
               </div>
+            </div>
+
+            <div class="d-flex justify-content-md-center">
+              <button v-on:click="view_book(book.id)" class="btn btn-primary" style="margin-top:10px">View book</button>
             </div>
             <!-- <div style="margin-top:20px">
                   <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -96,7 +99,7 @@
         <h2>All Books</h2>
       </div>
       <div v-for="book in books">
-        <div class="container book-card" v-on:mouseenter="hover_card" style="background-color:azure; min-height:600px">
+        <div class="container book-card" style="background-color:azure; min-height:600px">
           <!-- Watchlist div -->
           <div class="d-flex justify-content-end"
             v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
@@ -107,8 +110,6 @@
                 aria-hidden="true"></span>
             </button>
           </div>
-          <!-- v-on:click="hover_card"  mouseover -->
-          <!-- <div class="card " style="width: 22rem;"> -->
           <div class="d-flex justify-content-md-center">
 
             <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
@@ -123,10 +124,17 @@
                 <h5 class="flex-parent card-title">${ book.title }</h5>
               </div>
             </div>
-            <div class="d-flex justify-content-start">
-              <b>Author: &nbsp</b>
-              <p>${book.author}</p>
+
+            <div class="d-flex justify-content-between">
+              <div>
+                <b>Author: &nbsp ${book.author}</b>
+              </div>
+              <div>
+                <b v-if="book.price">&emsp; Price: ${book.price} $</b>
+                <b v-else>&emsp; Not price</b>
+              </div>
             </div>
+
             <div v-if="!book.description">
               <b>Description: </b>
               <p>This book doesn't have a description</p>
@@ -135,24 +143,20 @@
             <div v-else>
               <p class="max-lines">${ book.description }</p>
             </div>
-            <div class="d-flex justify-content-between">
-              <a href="./index.html" class="text">@owner</a>
-              <b v-if="book.price">&emsp; Price: ${book.price} $</b>
-              <b v-else>&emsp; Not price</b>
-            </div>
             <h5>Tags:</h5>
             <div v-if="book.tags" class="d-flex justify-content-start flex-wrap">
               <div v-for="tag in book.tags">
                 <span class="badge badge-pill badge-dark own-badge">${ tag }</span>
               </div>
             </div>
-            <!-- <div style="margin-top:20px">
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div> -->
+            <div class="d-flex justify-content-md-center">
+              <button v-on:click="view_book(book.id)" class="btn btn-primary" style="margin-top:10px">View book</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <script src="{{ = URL('static/js', 'index.js') }}"></script>
