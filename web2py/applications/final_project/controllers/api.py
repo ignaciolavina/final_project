@@ -1,4 +1,4 @@
-import os
+import os, json
 
 def get_logged_in_user():
     user = None if auth.user is None else auth.user
@@ -30,6 +30,7 @@ def get_promoted_tags():
     newPath = os.path.join(parentDir, 'config/config.txt')
     path = open(newPath)
     config = json.load(path)
+    print(config)
     path.close()
     return response.json(dict(config=config))
 

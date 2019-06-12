@@ -40,8 +40,28 @@ let getLoggedInUser = function (callback) {
 
 // Function to get the promoted books and display them
 let getPromotedBooks = function () {
-    
+    $.getJSON(getPromotedBooksURL, function (response) {
+        app.config = response.config;
+        consolidatePromoTags();
+    }).fail( function(d, textStatus, error) {
+        console.error("getJSON failed, status: " + textStatus + ", error: "+error)
+    });
 }
+
+// Uses the tags to sort through the books we already have
+let consolidatePromoTags = function () {
+    let temp_list = [];
+    app.config.current_classes.forEach(element => {
+        temp_list.push(element.name);
+    });
+    app.books.forEach(element => {
+         element.tags.forEach(e => {
+             if (temp_list.includes(e)) {
+                 app.promoted_books.push(element);
+             }
+         });
+    });
+};
 
 let do_search = function () {
     $.getJSON(search_url,
