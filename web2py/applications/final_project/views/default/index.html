@@ -93,25 +93,32 @@
               <h5 class="card-title">${ book.title }</h5>
             </div>
             <div class="d-flex justify-content-start">
-              <p>Author: &nbsp</p>
-              <b>${book.author}</b>
+              <b>Author: &nbsp</b>
+              <p>${book.author}</p>
             </div>
-
+            <div v-if="!book.description">
+              <b>Description: </b>
+              <p>This book hasn't got description</p>
+              <br>
+              <br>
+            </div>
+            <div v-else>
+              <p class="max-lines">${ book.description }</p>
+            </div>
             <div class="d-flex justify-content-between">
               <a href="./index.html" class="text">@owner</a>
-              <b class="">&emsp; Price: ${book.price} $</b>
+              <b v-if="book.price">&emsp; Price: ${book.price} $</b>
+              <b v-else>&emsp; Not price</b>
             </div>
-            <p class="max-lines">${ book.description }</p>
             <h5>Tags:</h5>
-            <div v-if="!book.description">
-              <p>This book hasn't got description</p>
-            </div>
             <div class="d-flex justify-content-start flex-wrap">
               <div v-for="tag in book.tags">
                 <span class="badge badge-pill badge-dark own-badge">${ tag }</span>
               </div>
             </div>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div style="margin-top:20px">
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
           </div>
         </div>
       </div>
