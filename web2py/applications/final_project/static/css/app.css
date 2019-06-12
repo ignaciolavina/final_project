@@ -82,6 +82,11 @@ body {
     color: gold;
 }
 
+.own-badge{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
 
 /* .book-container {
     background-color: powderblue;
@@ -95,8 +100,18 @@ body {
 .book-title {
     display: inline-block;
     font-style: italic;
-    font-size: 25px;
+    /* font-size: 25px; */
+    flex: 1;
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.flex-parent {
+    display: flex;
+    align-items: center;
+  }
 
 .move-right {
     display: flex;
