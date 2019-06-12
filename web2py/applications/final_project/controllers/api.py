@@ -219,7 +219,18 @@ def get_user_books():
     for row in rows:
         book_ret = db(db.book.id == row.book_id).select().first()
         books.append(book_ret)
-    return response.json(dict(books = books))
+
+    with_watchlist = (request.vars.with_watchlist == 'true')
+    if (with_watchlist == True):
+        to_return = []
+        # Iterate back through the books to give their watchlist status for the current user
+        for book in books:
+            if (book != None):
+                book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
+            to_return.append(book)
+        return response.json(dict(books=to_return))
+    else:
+        return response.json(dict(books=books))
 
 
 def delete_user_book():

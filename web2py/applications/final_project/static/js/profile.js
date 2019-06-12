@@ -75,7 +75,10 @@ let processUserBooks = function () {
 };
 
 let get_user_books = function () {
-    $.getJSON(get_user_books_url, function (response) {
+    $.getJSON(get_user_books_url, {
+        with_watchlist: true
+    },
+        function (response) {
         app.user_books = response.books;
         processUserBooks();
     });
