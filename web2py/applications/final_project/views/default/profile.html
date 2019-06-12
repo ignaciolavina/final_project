@@ -152,8 +152,7 @@
                 </div>
             </div>
             <div v-for="book in watchlisted_books">
-                <div class="container book-card" v-on:mouseenter="hover_card"
-                    style="background-color:azure; min-height:600px">
+                <div class="container book-card" style="background-color:azure; min-height:600px">
                     <!-- Watchlist div -->
                     <div class="d-flex justify-content-end"
                         v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
@@ -164,8 +163,6 @@
                                 aria-hidden="true"></span>
                         </button>
                     </div>
-                    <!-- v-on:click="hover_card"  mouseover -->
-                    <!-- <div class="card " style="width: 22rem;"> -->
                     <div class="d-flex justify-content-md-center">
 
                         <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
@@ -219,21 +216,10 @@
                 <h2>My Books</h2>
             </div>
             <div v-for="book in user_books">
-                <div class="container book-card" v-on:mouseenter="hover_card"
-                    style="background-color:azure; min-height:600px">
-                    <!-- Watchlist div -->
-                    <div class="d-flex justify-content-end"
-                        v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
-                        <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)" style="margin:10px">
-                            <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
-                                aria-hidden="true"></span>
-                            <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon"
-                                aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <!-- v-on:click="hover_card"  mouseover -->
-                    <!-- <div class="card " style="width: 22rem;"> -->
-                    <div class="d-flex justify-content-md-center">
+
+                <div class="container book-card" style="background-color:azure;">
+
+                    <div class="d-flex justify-content-md-center" style=" margin-top:20px">
 
                         <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
                     </div>
@@ -247,10 +233,17 @@
                                 <h5 class="flex-parent card-title">${ book.title }</h5>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-start">
-                            <b>Author: &nbsp</b>
-                            <p>${book.author}</p>
+
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <b>Author: &nbsp ${book.author}</b>
+                            </div>
+                            <div>
+                                <b v-if="book.price">&emsp; Price: ${book.price} $</b>
+                                <b v-else>&emsp; Not price</b>
+                            </div>
                         </div>
+
                         <div v-if="!book.description">
                             <b>Description: </b>
                             <p>This book doesn't have a description</p>
@@ -259,25 +252,25 @@
                         <div v-else>
                             <p class="max-lines">${ book.description }</p>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="./index.html" class="text">@owner</a>
-                            <b v-if="book.price">&emsp; Price: ${book.price} $</b>
-                            <b v-else>&emsp; Not price</b>
-                        </div>
                         <h5>Tags:</h5>
                         <div v-if="book.tags" class="d-flex justify-content-start flex-wrap">
                             <div v-for="tag in book.tags">
                                 <span class="badge badge-pill badge-dark own-badge">${ tag }</span>
                             </div>
                         </div>
-                        <!-- <div style="margin-top:20px">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                              </div> -->
+                        <div class="d-flex justify-content-md-center">
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            <button class="btn btn-danger" v-on:click="delete_confirmation(book)"
+                                style="margin:10px">Delete book</button>
+                            <button class="btn btn-primary" v-on:click="edit_book(book)" style="margin:10px">Edit
+                                book</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script src="{{ = URL('static/js', 'profile.js') }}"></script>
