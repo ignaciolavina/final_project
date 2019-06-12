@@ -2,8 +2,7 @@
 
 
 <div>
-    <h1>Edit book</h1>
-    <!-- {{ = book}} -->
+    <h1>View book</h1>
 </div>
 <br><br>
 
@@ -15,20 +14,9 @@
             </div>
             <br>
             <div class="container" style="text-align: center">
-                <!-- <button class="btn btn-uplo"> -->
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text btn-primary" id="inputGroupFileAddon01">Update file</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">
-                            <!-- <button class="btn btn-primary" for="inputGroupFile01">Submit</button> -->
-                        </label>
-                    </div>
-                </div>
+                <h3>Book Owner:</h3>
+                <h4>{{=owner.first_name}}</h4>
+                <h4>{{=owner.email}}</h4>
             </div>
 
         </div>
@@ -45,7 +33,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input type="text" class="form-control" placeholder="title" v-model="book_title"
-                                            value="{{ = book.title}}" required>
+                                            value="{{ = book.title}}" readonly>
                                     </div>
                                 </div>
                                 <hr>
@@ -56,25 +44,23 @@
                                     <label for="" class="col-2 col-form-label">Author</label>
                                     <div class="col-10">
                                         <input id="book_author" placeholder="Author" v-model="book_author"
-                                            class="form-control here" type="text" value="{{ = book.author}}">
+                                            class="form-control here" type="text" value="{{ = book.author}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-2 col-form-label">Price</label>
                                     <div class="col-3">
                                         <input id="book_price" placeholder="$" v-model="book_price"
-                                            class="form-control here" type="number" min="0" value="{{ = book.price}}">
+                                            class="form-control here" type="number" min="0" value="{{ = book.price}}"
+                                            readonly>
                                     </div>
                                     <label for="" class="col-2 col-form-label">Condition</label>
                                     <div class="col-3">
                                         <!-- <input id="book_condition" placeholder="" v-model="vmodel_condition"
                                                 class="form-control here" list="condition"> -->
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" readonly>
                                             <!-- <option value="" selected disabled hidden>Choose here</option> -->
                                             <option value="1">New</option>
-                                            <option value="2">Semi-new</option>
-                                            <option value="3" selected>Used</option>
-                                            <option value="4">Very used</option>
                                         </select>
                                     </div>
                                 </div>
@@ -83,12 +69,12 @@
                                     <label for="" class="col-2 col-form-label">Course</label>
                                     <div class="col-3">
                                         <input id="book_course" placeholder="cmps183" v-model="book_course"
-                                            class="form-control here" type="text" value="{{ = book.course}}">
+                                            class="form-control here" type="text" value="{{ = book.course}}" readonly>
                                     </div>
                                     <label for="" class="col-2 col-form-label">Topic</label>
                                     <div class="col-3">
                                         <input id="book_topic" placeholder="topic" v-model="book_topic"
-                                            class="form-control here" type="text" value="{{ = book.topic}}">
+                                            class="form-control here" type="text" value="{{ = book.topic}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -96,37 +82,18 @@
                                     <div class="col-9">
                                         <textarea class="form-control" aria-label="With textarea"
                                             placeholder="Please, describe the book to help other users" cols="40"
-                                            rows="4" v-model="book_description"
-                                            value="{{ = book.description}}"></textarea>
+                                            rows="4" v-model="book_description" value="{{ = book.description}}"
+                                            readonly></textarea>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="col-3"> List of Tags</h5>
+                                    <div class="col-9">
 
+                                        {{items = tags}}
 
-
-                                    <br>
-                                    <br>
-                                    <!-- List of tags -->
-                                    <hr>
-                                    <div class="form-group row" style="margin-top:20px">
-                                        <label for="username" class="col-2 col-form-label">Other tags</label>
-                                        <div class="col-3">
-                                            <input id="book_tag1" placeholder="optional tag" v-model="book_tag1"
-                                                class="form-control here" type="text">
-                                        </div>
-                                        <div class="col-3">
-                                            <input id="book_tag2" placeholder="optional tag" v-model="book_tag2"
-                                                class="form-control here" type="text">
-                                        </div>
-                                        <div class="col-3">
-                                            <input id="book_tag3" placeholder="optional tag" v-model="book_tag3"
-                                                class="form-control here" type="text">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="center" style="margin-top:30px">
-                                        <!-- <a href="/"> -->
-                                        <button v-on:click="save_new_book" type="button" class="btn btn-primary col-4"
-                                            value="">Submit</button>
-                                        <!-- </a> -->
+                                        {{for item in items:}}<span
+                                            class="badge badge-pill badge-dark own-badge">{{=item}}</span>{{pass}}
                                     </div>
                             </form>
                         </div>
@@ -135,6 +102,4 @@
             </div>
         </div>
     </div>
-</div>
-<br>
 </div>
