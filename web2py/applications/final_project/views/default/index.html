@@ -71,10 +71,7 @@
         <h2>All Books</h2>
       </div>
       <div v-for="book in books">
-        <div class="container book-card" v-on:mouseenter="hover_card">
-          <!-- v-on:click="hover_card"  mouseover -->
-          <!-- <div class="card " style="width: 22rem;"> -->
-          <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
+        <div class="container book-card" v-on:mouseenter="hover_card" style="background-color: black">
           <!-- Watchlist div -->
           <div v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
             <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)">
@@ -84,19 +81,34 @@
                 aria-hidden="true"></span>
             </button>
           </div>
+          <!-- v-on:click="hover_card"  mouseover -->
+          <!-- <div class="card " style="width: 22rem;"> -->
+          <div class="d-flex justify-content-md-center">
+
+            <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
+          </div>
           <!-- Book body div -->
           <div class="card-body" style="background-color:azure">
-            <h5 class="card-title">${ book.title }</h5>
-            <a href="./index.html" class="text">@author</a>
-            <b>&emsp; Price: ${book.price} $</b>
-            <p class="max-lines">${ book.description }The book description is the pitch to the reader about why they
-              should buy your book. It is sales copy to get them to see that the book is for them (or not), and then
-              make the purchase. ... In many cases, the description is the factor that solidifies in the reader's mind
-              whether the book is for them or not</p>
+            <div class="row d-flex justify-content-md-center">
+              <h5 class="card-title">${ book.title }</h5>
+            </div>
+            <div class="d-flex justify-content-start">
+              <p>Author: &nbsp</p>
+              <b>${book.author}</b>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="./index.html" class="text">@owner</a>
+              <b class="">&emsp; Price: ${book.price} $</b>
+            </div>
+            <p class="max-lines">${ book.description }</p>
             <h5>Tags:</h5>
-            <div class="row">
+            <div v-if="!book.description">
+              <p>This book hasn't got description</p>
+            </div>
+            <div class="d-flex justify-content-start flex-wrap">
               <div v-for="tag in book.tags">
-                <span class="badge badge-pill badge-dark max-lines">${ tag }</span>
+                <span class="badge badge-pill badge-dark own-badge">${ tag }</span>
               </div>
             </div>
             <a href="#" class="btn btn-primary">Go somewhere</a>
