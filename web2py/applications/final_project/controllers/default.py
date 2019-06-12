@@ -14,26 +14,6 @@ def index():
 def new_book3():
     return dict()
 
-def books():
-    # db.book.id.readable = db.book.id.writable = False
-    grid = SQLFORM.grid(
-        db.book,
-        create= True,
-        editable = True,
-        csv=False
-    )
-    return dict(grid=grid)
-
-
-def book_owner():
-    # db.book.id.readable = db.book.id.writable = False
-    grid = SQLFORM.grid(
-        db.book_owner,
-        create= True,
-        editable = True,
-        csv=False
-    )
-    return dict(grid=grid)
 
 def view_book():
     if (request.args):
@@ -72,33 +52,8 @@ def edit_book():
 def new_book():
     return dict()
 
-def owners():
-    grid = SQLFORM.grid(
-        db.book_owner,
-        create= True,
-        editable = True,
-        csv=False
-    )
-    return dict(grid=grid)
-
-# def user(): return dict(form=auth())
-
-def clear():
-    db(db.book).delete()
-    db(db.tags).delete()
-    return "tags db deleted"
 
 
-def first():
-    if request.vars.visitor_name:
-        session.visitor_name = request.vars.visitor_name
-        redirect(URL('second'))
-    return dict()
-    
-def second():
-    return "redirection"
-
-# NOT Working properly
 @auth.requires_login()
 def profile():
     user = auth.user
@@ -117,32 +72,6 @@ def profile():
     # string = auth.user.email
     # user = db(db.user_profile.user_email == auth.user.email).select().first()
     return dict(name = user, grid = grid)
-
-
-# Just for testing purposes, for checking the list of tags
-# do /default/tags on the browser
-def tags():
-    # db.tags.id.readable = db.tags.id.writable = False
-    query = db.tags
-    # fields = (db.tags.name)
-    grid = SQLFORM.grid(
-        query,
-        # fields = fields,
-        create= True,
-        editable = True,
-        csv=False
-    )
-    return dict(grid=grid)
-
-
-
-# # ---- API (example) -----
-# @auth.requires_login()
-# def api_get_user_email():
-#     if not request.env.request_method == 'GET': raise HTTP(403)
-#     return response.json({'status':'success', 'email':auth.user.email})
-
-
 
 
 # ---- Smart Grid (example) -----
@@ -186,3 +115,57 @@ def download():
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
+
+
+
+# Easy access for testing to books database
+# def books():
+#     # db.book.id.readable = db.book.id.writable = False
+#     grid = SQLFORM.grid(
+#         db.book,
+#         create= True,
+#         editable = True,
+#         csv=False
+#     )
+#     return dict(grid=grid)
+
+# Easy access for testing to book_owner table database
+# def book_owner():
+#     # db.book.id.readable = db.book.id.writable = False
+#     grid = SQLFORM.grid(
+#         db.book_owner,
+#         create= True,
+#         editable = True,
+#         csv=False
+#     )
+#     return dict(grid=grid)
+
+# Easy access for testing for clear database
+# def clear():
+#     db(db.book).delete()
+#     db(db.tags).delete()
+#     return "tags db deleted"
+
+
+# Just for testing purposes, for checking the list of tags
+# do /default/tags on the browser
+# def tags():
+#     # db.tags.id.readable = db.tags.id.writable = False
+#     query = db.tags
+#     # fields = (db.tags.name)
+#     grid = SQLFORM.grid(
+#         query,
+#         # fields = fields,
+#         create= True,
+#         editable = True,
+#         csv=False
+#     )
+#     return dict(grid=grid)
+
+
+
+# # ---- API (example) -----
+# @auth.requires_login()
+# def api_get_user_email():
+#     if not request.env.request_method == 'GET': raise HTTP(403)
+#     return response.json({'status':'success', 'email':auth.user.email})

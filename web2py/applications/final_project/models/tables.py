@@ -9,8 +9,6 @@ def get_name():
 def get_current_time():
     return datetime.datetime.today
 
-# TO DO, Set primary keys and foreign keys
-
 
 # Check if we need it for display the user profile CURRENTLY UNUSED
 db.define_table('user_profile',
@@ -32,13 +30,12 @@ db.define_table('book',
     Field('topic', type='text', default=''),
     Field('description', type='text', default=''),
     Field('tags', 'list:string')
-    # "condition" & "state" are aparentrly reserved keywords
-    
+    # "condition" & "state" are aparentrly reserved keywords    
 )
 
 
 db.define_table('book_owner',
-            Field('user_id'), # references user?,
+            Field('user_id'), 
             Field('book_id', 'reference book')
 )
 
@@ -51,8 +48,7 @@ db.define_table('watchlist',
 
 # Tags is a table that has a name, and a list of books that contain that tag
 db.define_table('tags',
-    Field('name',  type='string', default=''), # Primary key?! SO no two tags with same name
-    # Field('books', 'list:reference book')
+    Field('name',  type='string', default=''), 
     Field('books', 'list:reference book')
     # primarykey = ['name']
 )

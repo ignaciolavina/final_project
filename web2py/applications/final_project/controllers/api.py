@@ -18,6 +18,7 @@ def get_all_books():
     else:
         return response.json(dict(books=books))
 
+
 def get_promoted_tags():
     '''Function that returns a dict with the json config object'''
     # ------------Path Setup------------------
@@ -90,10 +91,6 @@ def save_new_book():
         description = request.vars.description,
 
         tags = list_of_tags
-
-
-        # tags: app.tags
-
     )    
     # id_book contains the id of the book that we have just inserted in the db
     book = db.book(db.book.id == id_book)
@@ -238,7 +235,7 @@ def delete_user_book():
     book_id = request.vars.book_id
 
     # deletion book from all the tables
-    # Research ON DELETE CASCADE!
+    # ON DELETE CASCADE!
     # db(db.book_owner.user_id == auth.user.id, db.book_owner.book_id == book_id).delete()
     # db(db.watchlist.book_id == book_id).delete()
     db(db.book.id == book_id).delete()
