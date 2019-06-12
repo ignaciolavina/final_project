@@ -64,6 +64,11 @@ let consolidatePromoTags = function () {
 };
 
 let do_search = function () {
+    if (app.search_string == '') {
+        app.show_promos = true;
+    } else {
+        app.show_promos = false;
+    }
     $.getJSON(search_url,
         { 
             search_string: app.search_string,
@@ -108,7 +113,8 @@ let app = new Vue({
         books: [],
         promoted_books: [],
         search_string: '',
-        loggedInUser: undefined
+        loggedInUser: undefined,
+        show_promos: true
     },
     methods: {
         toggle_watchlist: toggle_watchlist,
