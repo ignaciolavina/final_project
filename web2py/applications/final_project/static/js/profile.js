@@ -112,7 +112,8 @@ let app = new Vue({
         vmodel_last_name: '',
         vmodel_public_info: '',
         updating_profile: false,
-        user_books: []
+        user_books: [],
+        watchlisted_books: []
     },
     methods: {
         update_profile: update_profile,
