@@ -1,0 +1,140 @@
+{{ extend 'layout.html' }}
+
+
+<div>
+    <h1>Edit book</h1>
+    <!-- {{ = book}} -->
+</div>
+<br><br>
+
+<div id="vue_new_book" class="container">
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="container" style="text-align: center">
+                <img src="../static/images/book.png" alt="Book" class="avatar">
+            </div>
+            <br>
+            <div class="container" style="text-align: center">
+                <!-- <button class="btn btn-uplo"> -->
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text btn-primary" id="inputGroupFileAddon01">Update file</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">
+                            <!-- <button class="btn btn-primary" for="inputGroupFile01">Submit</button> -->
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- New book form -->
+        <div v-if="true" class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="">
+                                <div class="form-group row">
+                                    <div class="col-3">
+                                        <h4>Book title</h4>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" placeholder="title" v-model="book_title"
+                                            value="{{ = book.title}}" required>
+                                    </div>
+                                </div>
+                                <hr>
+
+
+
+                                <div class="form-group row">
+                                    <label for="" class="col-2 col-form-label">Author</label>
+                                    <div class="col-10">
+                                        <input id="book_author" placeholder="Author" v-model="book_author"
+                                            class="form-control here" type="text" value="{{ = book.author}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-2 col-form-label">Price</label>
+                                    <div class="col-3">
+                                        <input id="book_price" placeholder="$" v-model="book_price"
+                                            class="form-control here" type="number" min="0" value="{{ = book.price}}">
+                                    </div>
+                                    <label for="" class="col-2 col-form-label">Condition</label>
+                                    <div class="col-3">
+                                        <!-- <input id="book_condition" placeholder="" v-model="vmodel_condition"
+                                                class="form-control here" list="condition"> -->
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <!-- <option value="" selected disabled hidden>Choose here</option> -->
+                                            <option value="1">New</option>
+                                            <option value="2">Semi-new</option>
+                                            <option value="3" selected>Used</option>
+                                            <option value="4">Very used</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-2 col-form-label">Course</label>
+                                    <div class="col-3">
+                                        <input id="book_course" placeholder="cmps183" v-model="book_course"
+                                            class="form-control here" type="text" value="{{ = book.course}}">
+                                    </div>
+                                    <label for="" class="col-2 col-form-label">Topic</label>
+                                    <div class="col-3">
+                                        <input id="book_topic" placeholder="topic" v-model="book_topic"
+                                            class="form-control here" type="text" value="{{ = book.topic}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-3 col-form-label">Book description</label>
+                                    <div class="col-9">
+                                        <textarea class="form-control" aria-label="With textarea"
+                                            placeholder="Please, describe the book to help other users" cols="40"
+                                            rows="4" v-model="book_description"
+                                            value="{{ = book.description}}"></textarea>
+                                    </div>
+
+
+
+                                    <br>
+                                    <br>
+                                    <!-- List of tags -->
+                                    <hr>
+                                    <div class="form-group row" style="margin-top:20px">
+                                        <label for="username" class="col-2 col-form-label">Other tags</label>
+                                        <div class="col-3">
+                                            <input id="book_tag1" placeholder="optional tag" v-model="book_tag1"
+                                                class="form-control here" type="text">
+                                        </div>
+                                        <div class="col-3">
+                                            <input id="book_tag2" placeholder="optional tag" v-model="book_tag2"
+                                                class="form-control here" type="text">
+                                        </div>
+                                        <div class="col-3">
+                                            <input id="book_tag3" placeholder="optional tag" v-model="book_tag3"
+                                                class="form-control here" type="text">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="center" style="margin-top:30px">
+                                        <!-- <a href="/"> -->
+                                        <button v-on:click="save_new_book" type="button" class="btn btn-primary col-4"
+                                            value="">Submit</button>
+                                        <!-- </a> -->
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</div>

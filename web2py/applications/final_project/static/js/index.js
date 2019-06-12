@@ -43,8 +43,8 @@ let getPromotedBooks = function () {
     $.getJSON(getPromotedBooksURL, function (response) {
         app.config = response.config;
         consolidatePromoTags();
-    }).fail( function(d, textStatus, error) {
-        console.error("getJSON failed, status: " + textStatus + ", error: "+error)
+    }).fail(function (d, textStatus, error) {
+        console.error("getJSON failed, status: " + textStatus + ", error: " + error)
     });
 }
 
@@ -55,11 +55,11 @@ let consolidatePromoTags = function () {
         temp_list.push(element.name);
     });
     app.books.forEach(element => {
-         element.tags.forEach(e => {
-             if (temp_list.includes(e)) {
-                 app.promoted_books.push(element);
-             }
-         });
+        element.tags.forEach(e => {
+            if (temp_list.includes(e)) {
+                app.promoted_books.push(element);
+            }
+        });
     });
 };
 
@@ -70,7 +70,7 @@ let do_search = function () {
         app.show_promos = false;
     }
     $.getJSON(search_url,
-        { 
+        {
             search_string: app.search_string,
             with_watchlist: (app.loggedInUser != undefined)
         },
@@ -84,6 +84,13 @@ let do_search = function () {
 
 let hover_card = function () {
     console.log("hover")
+};
+
+let view_book = function (book_id) {
+    console.log("view book");
+    console.log(book_id);
+    window.location.href = '/view_book/' + book_id;
+
 };
 
 let toggle_watchlist = function (bookIndex) {
@@ -118,6 +125,7 @@ let app = new Vue({
     },
     methods: {
         toggle_watchlist: toggle_watchlist,
+        view_book: view_book,
         hover_card: hover_card
     }
 });

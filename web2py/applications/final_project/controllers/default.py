@@ -42,8 +42,8 @@ def view_book():
         redirect(URL('index'))
 
     book = db(db.book.id == book_id).select().first()
-    return dict(book = query)
-    
+    return dict(book = book)
+
 
 def edit_book():
 

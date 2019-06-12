@@ -30,6 +30,8 @@
         <h2>Books for current classes!</h2>
       </div>
       <div v-for="book in promoted_books">
+        <button v-on:click="view_book(book.id)">go_to book</button>
+
         <div class="container book-card" v-on:mouseenter="hover_card" style="background-color:azure; min-height:600px">
           <!-- Watchlist div -->
           <div class="d-flex justify-content-end"
