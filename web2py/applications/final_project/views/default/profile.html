@@ -8,9 +8,11 @@
     let get_user_books_url = "{{ = URL('api', 'get_user_books') }}";
     let delete_user_book_url = "{{ = URL('api', 'delete_user_book') }}";
     let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
+    let toggle_watchlist_url = "{{ = URL('api', 'toggle_watchlist') }}";
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
+<link href="{{ = URL('static', '/open-iconic-master/font/css/open-iconic-bootstrap.css')}}" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
 
 <div id="profile_page">
@@ -156,7 +158,7 @@
                 <div class="container book-card" style="background-color:azure; min-height:600px">
                     <!-- Watchlist div -->
                     <div class="d-flex justify-content-end" v-if="(user != '') && (book.is_watchlisted != undefined)">
-                        <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)" style="margin:10px">
+                        <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index, watchlisted_books)" style="margin:10px">
                             <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
                                 aria-hidden="true"></span>
                             <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon"
@@ -218,6 +220,15 @@
             <div v-for="book in user_books">
 
                 <div class="container book-card" style="background-color:azure;  min-height:600px">
+                    <!-- Watchlist div -->
+                    <div class="d-flex justify-content-end" v-if="(user != '') && (book.is_watchlisted != undefined)">
+                        <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index, user_books)" style="margin:10px">
+                            <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
+                                aria-hidden="true"></span>
+                            <span v-if="!book.is_watchlisted" class="oi oi-eye watchlist-icon" title="eye icon"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
                     <div class="d-flex justify-content-md-center" style=" margin-top:20px">
                         <img class="card-img-top card-image" src="../static/images/book.png" alt="Card image cap">
                     </div>

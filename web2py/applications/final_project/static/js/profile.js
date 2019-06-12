@@ -37,20 +37,22 @@ let update_profile = function () {
 
 };
 
-let toggle_watchlist = function (bookIndex) {
-    let book = app.books[bookIndex];
+let toggle_watchlist = function (bookIndex, bookArray) {
+    let book = bookArray[bookIndex];
     let new_status = !book.is_watchlisted;
     book.is_watchlisted = new_status;
     $.post(toggle_watchlist_url, {
         // Book ID
         book_id: book.id,
         // User ID
-        user_email: app.loggedInUser.email
+        user_email: app.user.email
     }, function (response) {
-
+        if (bookArray == app.watchlisted_books && (!book.is_watchlisted)) {
+            app.watchlisted_books.splice(bookIndex, 1);
+        }
         // for implementing a sping load bar
         setTimeout(function () {
-            alert("Book added to watchlist correctly!");
+            alert("Watchlist status toggled!");
         }, 1000);
     }
     )
