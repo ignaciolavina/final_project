@@ -40,7 +40,7 @@ let getLoggedInUser = function (callback) {
 
 // Function to get the promoted books and display them
 let getPromotedBooks = function () {
-    // Make this work please
+    
 }
 
 let do_search = function () {
@@ -66,7 +66,7 @@ let toggle_watchlist = function (bookIndex) {
         // Book ID
         book_id: book.id,
         // User ID
-        user_email: app.loggedInUser
+        user_email: app.loggedInUser.email
     }, function (response) {
 
         // for implementing a sping load bar
