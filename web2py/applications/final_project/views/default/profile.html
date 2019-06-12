@@ -7,6 +7,7 @@
     let save_profile_url = "{{ = URL('api', 'save_profile') }}";
     let get_user_books_url = "{{ = URL('api', 'get_user_books') }}";
     let delete_user_book_url = "{{ = URL('api', 'delete_user_book') }}";
+    let getAllBooksUrl = "{{ = URL('api', 'get_all_books') }}";
 </script>
 
 <link rel="stylesheet" type="text/css" href="{{ = URL('static/css', 'app.css') }}" />
@@ -156,7 +157,7 @@
                     style="background-color:azure; min-height:600px">
                     <!-- Watchlist div -->
                     <div class="d-flex justify-content-end"
-                        v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
+                        v-if="(user != '') && (book.is_watchlisted != undefined)">
                         <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)" style="margin:10px">
                             <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
                                 aria-hidden="true"></span>
@@ -223,7 +224,7 @@
                     style="background-color:azure; min-height:600px">
                     <!-- Watchlist div -->
                     <div class="d-flex justify-content-end"
-                        v-if="(loggedInUser != undefined) && (book.is_watchlisted != undefined)">
+                        v-if="(user != '') && (book.is_watchlisted != undefined)">
                         <button class="btn btn-primary" v-on:click="toggle_watchlist(book.index)" style="margin:10px">
                             <span v-if="book.is_watchlisted" class="oi oi-eye watchlisted-icon" title="gold eye icon"
                                 aria-hidden="true"></span>
