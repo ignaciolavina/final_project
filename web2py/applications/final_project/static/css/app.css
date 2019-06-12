@@ -118,12 +118,25 @@ body {
     justify-content: flex-end;
 }
 
-.reviews-button {
-    border: none;
+.own-button {
+    margin-top:10px;
     border-radius: 5px;
-    background-color: rgb(160, 206, 212);
     padding: 5px 10px;
     transition: 0.5s all;
+
+    background: #131313;
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.own-button:hover {
+    cursor: pointer;
+    background-color: rgb(104, 157, 165);
+}
+
+.own-button:focus {
+    outline: none;
 }
 
 .reviews-button:hover {
@@ -156,6 +169,7 @@ body {
     font-size: 17px;
     margin-left: 55px;
 }
+
 
 .save-button {
     border: none;
