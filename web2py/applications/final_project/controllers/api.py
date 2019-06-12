@@ -148,11 +148,22 @@ def save_new_book():
 # And retrieves only the products that match part of that string
 def search():
     tags = db(db.tags).select()
+    # Check if we need the watchlist or not
+    with_watchlist = (request.vars.with_watchlist == 'true')
     # Obtaining the string of the search var from the request vars
     search_string = request.vars.search_string
     if (search_string == ''):
-        result = db(db.book).select()
-        return response.json(dict(books=result))
+        books = db(db.book).select()
+        if (with_watchlist == True):
+            to_return = []
+            # Iterate back through the books to give their watchlist status for the current user
+            for book in books:
+                if (book != None):
+                    book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
+                to_return.append(book)
+            return response.json(dict(books=to_return))
+        else:
+            return response.json(dict(books=books))
 
     # result[] is the variable to send back (contains a list of books)
     result = []
@@ -173,9 +184,16 @@ def search():
                 # print('id founded', book)
                 result.append(db(db.book.id == book).select().first())
 
-    # for r in result:
-    #     print('r', r)
-    return response.json(dict(books=result))
+    if (with_watchlist == True):
+        to_return = []
+        # Iterate back through the books to give their watchlist status for the current user
+        for book in result:
+            if (book != None):
+                book['watchlist_status'] = is_book_on_watchlist(auth.user.email, book.id) 
+            to_return.append(book)
+        return response.json(dict(books=to_return))
+    else:
+        return response.json(dict(books=result))
 
 def save_profile():
     print ("saving_profile")

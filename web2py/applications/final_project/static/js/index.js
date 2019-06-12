@@ -65,12 +65,15 @@ let consolidatePromoTags = function () {
 
 let do_search = function () {
     $.getJSON(search_url,
-        { search_string: app.search_string },
+        { 
+            search_string: app.search_string,
+            with_watchlist: (app.loggedInUser != undefined)
+        },
         function (data) {
             app.strings = data.strings;
             // self.vue.products = data.products;
             app.books = data.books;
-
+            processBooks();
         });
 };
 
